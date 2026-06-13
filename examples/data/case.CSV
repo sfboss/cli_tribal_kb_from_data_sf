@@ -1,0 +1,11 @@
+Id,AccountId,ContactId,Subject,Description,Status,Priority,Origin,OwnerId,CreatedById,CreatedDate,ClosedDate,Type
+500A,001A,003A,ERP-17 sync failed,Use the manual spreadsheet workaround until Jira OPS-44 is cleared,Closed,High,Email,005B,005A,2026-01-05,2026-01-07,Integration
+500B,001A,003B,ERP-17 sync failed,Manual export/import is still required; route to Platform Ops,Closed,High,Email,005B,005B,2026-02-05,2026-02-08,Integration
+500C,001A,003A,ERP-17 sync failed,URGENT blocker: bypass the normal sync and update Excel,Working,Low,Web,005B,005A,2026-05-20,,Integration
+500D,001B,003C,Portal access,User is blocked; send to Identity team,Closed,Medium,Web,005C,005A,2026-03-10,2026-03-12,Access
+500E,001B,003D,Portal access,Temporary workaround documented in Slack,Working,Medium,Web,005C,005C,2026-05-21,,Access
+500F,001C,003E,POS-9 timeout,SEV1 critical issue in store system,New,Low,Phone,005B,005B,2026-05-22,,Incident
+500G,001C,003H,POS-9 timeout,Waiting on vendor and Jira ticket RET-8,Working,High,Phone,005B,005A,2026-05-23,,Incident
+500H,001C,003E,Refund process,Manual copy paste from spreadsheet is required,Closed,Medium,Email,005A,005B,2026-02-20,2026-02-22,Process
+500I,001D,,Billing exception,Needs approval for special case override,New,Medium,Email,005A,005I,2026-05-24,,Billing
+500J,001F,003G,Internal request,Route to admin team for manual upload,Closed,Low,Email,005A,005I,2026-04-01,2026-04-01,Internal

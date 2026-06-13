@@ -48,12 +48,13 @@ class AnalysisResult:
     report_title: str
     report_subtitle: str
     generated_at: str
+    as_of: str
     source_summary: dict[str, int]
     rules: list[RuleResult]
 
     @property
     def counts(self) -> dict[str, int]:
-        counts = {"finding": 0, "pass": 0, "error": 0}
+        counts = {"finding": 0, "pass": 0, "skipped": 0, "error": 0}
         for rule in self.rules:
             counts[rule.status] = counts.get(rule.status, 0) + 1
         return counts
@@ -62,4 +63,3 @@ class AnalysisResult:
         result = asdict(self)
         result["counts"] = self.counts
         return result
-

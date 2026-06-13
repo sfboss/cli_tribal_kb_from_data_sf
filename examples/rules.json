@@ -1,223 +1,533 @@
 {
   "report": {
-    "title": "Revenue Operations Tribal Knowledge",
-    "subtitle": "Signals and operating risks inferred from a sample Salesforce export."
+    "title": "Salesforce Tribal Knowledge Signal Report",
+    "subtitle": "Deterministic observations about naming, ownership, relationship workarounds, pipeline, support language, and activity."
   },
   "rules": [
     {
       "id": "contact-email-coverage",
-      "title": "Contact email coverage is weak",
-      "description": "Measures the share of contacts that cannot be reached by email.",
-      "category": "Data quality",
+      "title": "Contacts without email addresses",
+      "description": "Measures the exact share of contacts whose Email value is blank.",
+      "category": "Contact knowledge",
       "severity": "high",
       "calculation": {
         "operator": "divide",
         "operands": [
-          {
-            "aggregate": "count",
-            "object": "Contact",
-            "where": {
-              "field": "Email",
-              "operator": "is_blank"
-            }
-          },
-          {
-            "aggregate": "count",
-            "object": "Contact"
-          }
+          { "aggregate": "count", "object": "Contact", "where": { "field": "Email", "operator": "is_blank" } },
+          { "aggregate": "count", "object": "Contact" }
         ]
       },
-      "threshold": {
-        "operator": "gt",
-        "value": 0.2
-      },
+      "threshold": { "operator": "gt", "value": 0.2 },
       "format": "percent",
       "message": "{formatted_value} of contacts have no email address.",
-      "recommendation": "Prioritize email enrichment before the next outbound or renewal campaign.",
-      "evidence": {
-        "object": "Contact",
-        "where": {
-          "field": "Email",
-          "operator": "is_blank"
-        },
-        "fields": ["Id", "Name", "AccountId", "Title"]
-      }
+      "evidence": { "object": "Contact", "where": { "field": "Email", "operator": "is_blank" }, "fields": ["Id", "Name", "AccountId", "Title"] }
+    },
+    {
+      "id": "duplicate-contact-email",
+      "title": "Contacts share normalized email addresses",
+      "description": "Counts every contact row belonging to a case-insensitive duplicate email group.",
+      "category": "Contact knowledge",
+      "severity": "medium",
+      "calculation": { "aggregate": "duplicate_row_count", "object": "Contact", "field": "Email", "normalize": "email" },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} contact rows belong to duplicate normalized email groups.",
+      "evidence": { "object": "Contact", "where": { "field": "Email", "operator": "is_not_blank" }, "fields": ["Id", "Name", "AccountId", "Email"] }
+    },
+    {
+      "id": "personal-contact-email",
+      "title": "Business contacts use personal email domains",
+      "description": "Counts contacts whose email domain is in an explicit personal-domain list.",
+      "category": "Contact knowledge",
+      "severity": "low",
+      "calculation": { "aggregate": "count", "object": "Contact", "where": { "field": "Email", "operator": "email_domain_in", "value": ["gmail.com", "yahoo.com", "outlook.com", "aol.com", "icloud.com"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} contacts use a configured personal email domain.",
+      "evidence": { "object": "Contact", "where": { "field": "Email", "operator": "email_domain_in", "value": ["gmail.com", "yahoo.com", "outlook.com", "aol.com", "icloud.com"] }, "fields": ["Id", "Name", "AccountId", "Email"] }
+    },
+    {
+      "id": "normalized-account-name-duplicates",
+      "title": "Account names collapse to the same company name",
+      "description": "Removes punctuation and legal suffixes before counting duplicate Account names.",
+      "category": "Naming and nomenclature",
+      "severity": "high",
+      "calculation": { "aggregate": "duplicate_row_count", "object": "Account", "field": "Name", "normalize": "company_name" },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} account rows share a normalized company name.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "ParentId", "OwnerId"] }
+    },
+    {
+      "id": "account-alias-markers",
+      "title": "Account names contain alias-style markers",
+      "description": "Counts Account names containing slash, parentheses, or quote markers.",
+      "category": "Naming and nomenclature",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "field": "Name", "operator": "matches_regex", "value": "[()/\\\"]" } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} account names contain alias-style punctuation.",
+      "evidence": { "object": "Account", "where": { "field": "Name", "operator": "matches_regex", "value": "[()/\\\"]" }, "fields": ["Id", "Name", "Type"] }
+    },
+    {
+      "id": "bucket-account-names",
+      "title": "Account names contain explicit bucket terms",
+      "description": "Matches an explicit list of common bucket-account terms.",
+      "category": "Naming and nomenclature",
+      "severity": "medium",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "field": "Name", "operator": "contains_any", "value": ["misc", "unknown", "other", "house", "test", "internal"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} account names contain configured bucket terms.",
+      "evidence": { "object": "Account", "where": { "field": "Name", "operator": "contains_any", "value": ["misc", "unknown", "other", "house", "test", "internal"] }, "fields": ["Id", "Name", "Type", "OwnerId"] }
+    },
+    {
+      "id": "contact-owner-account-owner-mismatch",
+      "title": "Accounts have contacts owned by other users",
+      "description": "Counts Accounts with at least one related Contact whose OwnerId differs from the Account OwnerId.",
+      "category": "Ownership and hidden contributors",
+      "severity": "medium",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "Contact", "local_field": "Id", "remote_field": "AccountId", "where": { "field": "OwnerId", "operator": "ne_root_field", "value": "OwnerId" } }, "operator": "gt", "value": 0 } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have contacts owned by users other than the account owner.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
     },
     {
       "id": "accounts-without-contacts",
       "title": "Accounts exist without mapped contacts",
-      "description": "Uses Account.Id to Contact.AccountId to find accounts with no relationship coverage.",
-      "category": "Relationship coverage",
+      "description": "Counts Accounts with zero Contact.AccountId matches.",
+      "category": "Cross-object relationships",
       "severity": "medium",
-      "calculation": {
-        "aggregate": "count",
-        "object": "Account",
-        "where": {
-          "relationship": {
-            "object": "Contact",
-            "local_field": "Id",
-            "remote_field": "AccountId",
-            "aggregate": "count"
-          },
-          "operator": "eq",
-          "value": 0
-        }
-      },
-      "threshold": {
-        "operator": "gt",
-        "value": 0
-      },
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "Contact", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 } },
+      "threshold": { "operator": "gt", "value": 0 },
       "format": "number",
-      "message": "{formatted_value} accounts have no associated contacts.",
-      "recommendation": "Assign account owners to identify at least one current stakeholder.",
-      "evidence": {
-        "object": "Account",
-        "where": {
-          "relationship": {
-            "object": "Contact",
-            "local_field": "Id",
-            "remote_field": "AccountId",
-            "aggregate": "count"
-          },
-          "operator": "eq",
-          "value": 0
-        },
-        "fields": ["Id", "Name", "Industry", "OwnerId"]
-      }
+      "message": "{formatted_value} accounts have no related contacts.",
+      "evidence": { "object": "Account", "where": { "relationship": { "object": "Contact", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 }, "fields": ["Id", "Name", "Industry", "OwnerId"] }
+    },
+    {
+      "id": "accounts-with-contacts-no-opportunities",
+      "title": "Accounts have contacts but no opportunities",
+      "description": "Counts Accounts with one or more Contacts and zero Opportunities.",
+      "category": "Cross-object relationships",
+      "severity": "low",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Contact", "local_field": "Id", "remote_field": "AccountId" }, "operator": "gt", "value": 0 },
+        { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have contacts but no opportunities.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "accounts-with-opportunities-no-contacts",
+      "title": "Accounts have opportunities but no contacts",
+      "description": "Counts Accounts with one or more Opportunities and zero Contacts.",
+      "category": "Cross-object relationships",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId" }, "operator": "gt", "value": 0 },
+        { "relationship": { "object": "Contact", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have opportunities but no contacts.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "account-opportunity-owner-mismatch",
+      "title": "Account owners differ from related opportunity owners",
+      "description": "Counts Accounts with at least one Opportunity OwnerId different from the Account OwnerId.",
+      "category": "Ownership and hidden contributors",
+      "severity": "medium",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId", "where": { "field": "OwnerId", "operator": "ne_root_field", "value": "OwnerId" } }, "operator": "gt", "value": 0 } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have opportunities owned by other users.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "shadow-account-contributors",
+      "title": "Non-owners log activity on accounts",
+      "description": "Counts Accounts with Task activity from a user other than the Account owner.",
+      "category": "Ownership and hidden contributors",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "Task", "local_field": "Id", "remote_field": "WhatId", "where": { "field": "OwnerId", "operator": "ne_root_field", "value": "OwnerId" } }, "operator": "gt", "value": 0 } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have logged activity from non-owners.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "unofficial-account-teams",
+      "title": "Accounts use activity contributors without Account Team rows",
+      "description": "Counts Accounts with at least two distinct Task owners and no AccountTeamMember row.",
+      "category": "Workarounds and unofficial mechanisms",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Task", "local_field": "Id", "remote_field": "WhatId", "aggregate": "distinct_count", "field": "OwnerId" }, "operator": "gte", "value": 2 },
+        { "relationship": { "object": "AccountTeamMember", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have multiple activity contributors and no exported Account Team row.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "inactive-account-owners",
+      "title": "Accounts are owned by inactive users",
+      "description": "Counts Accounts whose OwnerId matches a User with IsActive=false.",
+      "category": "Ownership and hidden contributors",
+      "severity": "critical",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "User", "local_field": "OwnerId", "remote_field": "Id", "where": { "field": "IsActive", "operator": "is_false" } }, "operator": "gt", "value": 0 } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts are owned by inactive users.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "integration-created-accounts",
+      "title": "Core accounts were created by an integration user",
+      "description": "Counts Accounts whose CreatedById matches a User name containing Integration.",
+      "category": "Ownership and hidden contributors",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "User", "local_field": "CreatedById", "remote_field": "Id", "where": { "field": "Name", "operator": "contains", "value": "Integration" } }, "operator": "gt", "value": 0 } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts were created by a user named as an integration.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "CreatedById"] }
     },
     {
       "id": "stale-open-pipeline",
       "title": "Open pipeline contains stale close dates",
-      "description": "Measures open opportunities whose close date is more than 90 days old.",
-      "category": "Pipeline hygiene",
+      "description": "Measures open Opportunities whose CloseDate is more than 90 days before the run date.",
+      "category": "Pipeline knowledge",
       "severity": "critical",
-      "calculation": {
-        "operator": "divide",
-        "operands": [
-          {
-            "aggregate": "count",
-            "object": "Opportunity",
-            "where": {
-              "all": [
-                {
-                  "field": "StageName",
-                  "operator": "not_in",
-                  "value": ["Closed Won", "Closed Lost"]
-                },
-                {
-                  "field": "CloseDate",
-                  "operator": "older_than_days",
-                  "value": 90
-                }
-              ]
-            }
-          },
-          {
-            "aggregate": "count",
-            "object": "Opportunity",
-            "where": {
-              "field": "StageName",
-              "operator": "not_in",
-              "value": ["Closed Won", "Closed Lost"]
-            }
-          }
-        ]
-      },
-      "threshold": {
-        "operator": "gte",
-        "value": 0.25
-      },
+      "calculation": { "operator": "divide", "operands": [
+        { "aggregate": "count", "object": "Opportunity", "where": { "all": [
+          { "field": "IsClosed", "operator": "is_false" },
+          { "field": "CloseDate", "operator": "older_than_days", "value": 90 }
+        ] } },
+        { "aggregate": "count", "object": "Opportunity", "where": { "field": "IsClosed", "operator": "is_false" } }
+      ] },
+      "threshold": { "operator": "gte", "value": 0.25 },
       "format": "percent",
-      "message": "{formatted_value} of open opportunities have stale close dates.",
-      "recommendation": "Run a pipeline scrub and either re-date, close, or disqualify stale opportunities.",
-      "evidence": {
-        "object": "Opportunity",
-        "where": {
-          "all": [
-            {
-              "field": "StageName",
-              "operator": "not_in",
-              "value": ["Closed Won", "Closed Lost"]
-            },
-            {
-              "field": "CloseDate",
-              "operator": "older_than_days",
-              "value": 90
-            }
-          ]
-        },
-        "fields": ["Id", "Name", "StageName", "Amount", "OwnerId", "CloseDate"]
-      }
-    },
-    {
-      "id": "pipeline-owner-concentration",
-      "title": "Open pipeline is concentrated under one owner",
-      "description": "Finds the largest owner's share of all open opportunity records.",
-      "category": "Operating model",
-      "severity": "low",
-      "calculation": {
-        "aggregate": "largest_group_share",
-        "object": "Opportunity",
-        "field": "OwnerId",
-        "where": {
-          "field": "StageName",
-          "operator": "not_in",
-          "value": ["Closed Won", "Closed Lost"]
-        }
-      },
-      "threshold": {
-        "operator": "gt",
-        "value": 0.7
-      },
-      "format": "percent",
-      "message": "The leading owner controls {formatted_value} of open opportunity records.",
-      "recommendation": "Confirm this concentration is intentional and document backup ownership."
+      "message": "{formatted_value} of open opportunities have close dates more than 90 days old.",
+      "evidence": { "object": "Opportunity", "where": { "all": [{ "field": "IsClosed", "operator": "is_false" }, { "field": "CloseDate", "operator": "older_than_days", "value": 90 }] }, "fields": ["Id", "Name", "StageName", "Amount", "OwnerId", "CloseDate"] }
     },
     {
       "id": "missing-next-step",
-      "title": "Open opportunities have documented next steps",
-      "description": "Checks whether missing next steps remain below the accepted tolerance.",
-      "category": "Pipeline hygiene",
+      "title": "Open opportunities lack documented next steps",
+      "description": "Measures the exact blank NextStep share among open Opportunities.",
+      "category": "Pipeline knowledge",
       "severity": "medium",
-      "calculation": {
-        "operator": "divide",
-        "operands": [
-          {
-            "aggregate": "count",
-            "object": "Opportunity",
-            "where": {
-              "all": [
-                {
-                  "field": "StageName",
-                  "operator": "not_in",
-                  "value": ["Closed Won", "Closed Lost"]
-                },
-                {
-                  "field": "NextStep",
-                  "operator": "is_blank"
-                }
-              ]
-            }
-          },
-          {
-            "aggregate": "count",
-            "object": "Opportunity",
-            "where": {
-              "field": "StageName",
-              "operator": "not_in",
-              "value": ["Closed Won", "Closed Lost"]
-            }
-          }
-        ]
-      },
-      "threshold": {
-        "operator": "gt",
-        "value": 0.75
-      },
+      "calculation": { "operator": "divide", "operands": [
+        { "aggregate": "count", "object": "Opportunity", "where": { "all": [{ "field": "IsClosed", "operator": "is_false" }, { "field": "NextStep", "operator": "is_blank" }] } },
+        { "aggregate": "count", "object": "Opportunity", "where": { "field": "IsClosed", "operator": "is_false" } }
+      ] },
+      "threshold": { "operator": "gt", "value": 0.5 },
       "format": "percent",
-      "message": "{formatted_value} of open opportunities lack a next step.",
-      "recommendation": "Require a dated, owner-specific next step before an opportunity can advance."
+      "message": "{formatted_value} of open opportunities have a blank NextStep.",
+      "evidence": { "object": "Opportunity", "where": { "all": [{ "field": "IsClosed", "operator": "is_false" }, { "field": "NextStep", "operator": "is_blank" }] }, "fields": ["Id", "Name", "StageName", "OwnerId", "CloseDate"] }
+    },
+    {
+      "id": "open-pipeline-owner-concentration",
+      "title": "Open opportunity ownership is concentrated",
+      "description": "Calculates the largest OwnerId record share among open Opportunities.",
+      "category": "Pipeline knowledge",
+      "severity": "medium",
+      "calculation": { "aggregate": "largest_group_share", "object": "Opportunity", "field": "OwnerId", "where": { "field": "IsClosed", "operator": "is_false" } },
+      "threshold": { "operator": "gt", "value": 0.6 },
+      "format": "percent",
+      "message": "The leading owner controls {formatted_value} of open opportunity records."
+    },
+    {
+      "id": "won-revenue-owner-concentration",
+      "title": "Won revenue is concentrated under one owner",
+      "description": "Calculates the largest OwnerId share of summed Amount for won Opportunities.",
+      "category": "Ownership and hidden contributors",
+      "severity": "high",
+      "calculation": { "aggregate": "largest_group_sum_share", "object": "Opportunity", "group_by": "OwnerId", "field": "Amount", "where": { "field": "IsWon", "operator": "is_true" } },
+      "threshold": { "operator": "gt", "value": 0.75 },
+      "format": "percent",
+      "message": "The leading owner is associated with {formatted_value} of won opportunity amount."
+    },
+    {
+      "id": "renewal-classification-in-name",
+      "title": "Opportunity names carry renewal classification",
+      "description": "Counts Opportunity names containing an explicit renewal term.",
+      "category": "Workarounds and unofficial mechanisms",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Opportunity", "where": { "field": "Name", "operator": "contains_any", "value": ["renewal", "renew"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} opportunity names contain renewal classification terms.",
+      "evidence": { "object": "Opportunity", "where": { "field": "Name", "operator": "contains_any", "value": ["renewal", "renew"] }, "fields": ["Id", "Name", "Type", "StageName", "AccountId"] }
+    },
+    {
+      "id": "opportunity-code-names",
+      "title": "Opportunity names contain internal code patterns",
+      "description": "Counts Opportunity names matching an uppercase hyphenated code pattern.",
+      "category": "Naming and nomenclature",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Opportunity", "where": { "field": "Name", "operator": "matches_regex", "value": "\\b[A-Z]{2,}(?:-[A-Z0-9]+)+\\b", "case_sensitive": true } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} opportunity names contain uppercase hyphenated codes.",
+      "evidence": { "object": "Opportunity", "where": { "field": "Name", "operator": "matches_regex", "value": "\\b[A-Z]{2,}(?:-[A-Z0-9]+)+\\b", "case_sensitive": true }, "fields": ["Id", "Name", "AccountId", "OwnerId"] }
+    },
+    {
+      "id": "open-opportunities-without-task-activity",
+      "title": "Open opportunities have no directly linked tasks",
+      "description": "Counts open Opportunities with zero Task.WhatId matches.",
+      "category": "Activity knowledge",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Opportunity", "where": { "all": [
+        { "field": "IsClosed", "operator": "is_false" },
+        { "relationship": { "object": "Task", "local_field": "Id", "remote_field": "WhatId" }, "operator": "eq", "value": 0 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} open opportunities have no directly linked tasks.",
+      "evidence": { "object": "Opportunity", "fields": ["Id", "Name", "StageName", "OwnerId", "CloseDate"] }
+    },
+    {
+      "id": "accounts-with-repeat-wins",
+      "title": "Accounts have repeat won opportunities",
+      "description": "Counts Accounts with at least two related won Opportunities.",
+      "category": "Cross-object relationships",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId", "where": { "field": "IsWon", "operator": "is_true" } }, "operator": "gte", "value": 2 } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have at least two won opportunities.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "repeated-case-subjects",
+      "title": "Case subjects repeat after text normalization",
+      "description": "Counts Case rows in duplicate Subject groups after punctuation and case normalization.",
+      "category": "Support and internal language",
+      "severity": "high",
+      "calculation": { "aggregate": "duplicate_row_count", "object": "Case", "field": "Subject", "normalize": "text" },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} case rows belong to repeated normalized subject groups.",
+      "evidence": { "object": "Case", "fields": ["Id", "AccountId", "Subject", "Status", "OwnerId"] }
+    },
+    {
+      "id": "account-repeat-case-issues",
+      "title": "Accounts repeat the same normalized case subject",
+      "description": "Counts duplicate AccountId plus normalized Subject groups.",
+      "category": "Support and internal language",
+      "severity": "high",
+      "calculation": { "aggregate": "duplicate_group_count", "object": "Case", "fields": ["AccountId", "Subject"], "normalize": "text" },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} account-and-subject groups contain repeated cases."
+    },
+    {
+      "id": "case-workaround-language",
+      "title": "Cases explicitly mention workaround language",
+      "description": "Counts Case descriptions containing a configured workaround vocabulary.",
+      "category": "Support and internal language",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Case", "where": { "field": "Description", "operator": "contains_any", "value": ["workaround", "temp fix", "manual", "hack", "bypass"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} cases explicitly mention workaround-style language.",
+      "evidence": { "object": "Case", "where": { "field": "Description", "operator": "contains_any", "value": ["workaround", "temp fix", "manual", "hack", "bypass"] }, "fields": ["Id", "AccountId", "Subject", "Description", "OwnerId"] }
+    },
+    {
+      "id": "case-urgency-language",
+      "title": "Cases contain explicit urgency language",
+      "description": "Counts Cases whose Subject or Description contains configured urgency terms.",
+      "category": "Support and internal language",
+      "severity": "medium",
+      "calculation": { "aggregate": "count", "object": "Case", "where": { "any": [
+        { "field": "Subject", "operator": "contains_any", "value": ["urgent", "critical", "blocker", "sev1", "sev2", "escalate"] },
+        { "field": "Description", "operator": "contains_any", "value": ["urgent", "critical", "blocker", "sev1", "sev2", "escalate"] }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} cases contain configured urgency terms.",
+      "evidence": { "object": "Case", "fields": ["Id", "Subject", "Description", "Priority", "OwnerId"] }
+    },
+    {
+      "id": "case-external-tool-references",
+      "title": "Cases reference external tools",
+      "description": "Counts Case descriptions mentioning an explicit external-tool vocabulary.",
+      "category": "Support and internal language",
+      "severity": "medium",
+      "calculation": { "aggregate": "count", "object": "Case", "where": { "field": "Description", "operator": "contains_any", "value": ["jira", "slack", "teams", "excel", "spreadsheet", "zendesk", "netsuite", "sap", "oracle"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} cases reference configured external tools.",
+      "evidence": { "object": "Case", "where": { "field": "Description", "operator": "contains_any", "value": ["jira", "slack", "teams", "excel", "spreadsheet", "zendesk", "netsuite", "sap", "oracle"] }, "fields": ["Id", "AccountId", "Subject", "Description"] }
+    },
+    {
+      "id": "case-manual-process-language",
+      "title": "Cases describe manual process steps",
+      "description": "Counts Case descriptions containing configured manual-process phrases.",
+      "category": "Workarounds and unofficial mechanisms",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Case", "where": { "field": "Description", "operator": "contains_any", "value": ["manual", "spreadsheet", "upload", "export/import", "copy paste"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} cases describe configured manual-process terms.",
+      "evidence": { "object": "Case", "where": { "field": "Description", "operator": "contains_any", "value": ["manual", "spreadsheet", "upload", "export/import", "copy paste"] }, "fields": ["Id", "AccountId", "Subject", "Description"] }
+    },
+    {
+      "id": "low-priority-urgent-cases",
+      "title": "Low-priority cases contain urgency language",
+      "description": "Counts Priority=Low Cases whose Subject or Description contains configured urgency terms.",
+      "category": "Support and internal language",
+      "severity": "critical",
+      "calculation": { "aggregate": "count", "object": "Case", "where": { "all": [
+        { "field": "Priority", "operator": "eq", "value": "Low" },
+        { "any": [
+          { "field": "Subject", "operator": "contains_any", "value": ["urgent", "critical", "blocker", "sev1", "sev2"] },
+          { "field": "Description", "operator": "contains_any", "value": ["urgent", "critical", "blocker", "sev1", "sev2"] }
+        ] }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} low-priority cases contain urgency language.",
+      "evidence": { "object": "Case", "fields": ["Id", "Subject", "Description", "Priority", "Status"] }
+    },
+    {
+      "id": "case-internal-code-patterns",
+      "title": "Case subjects contain internal code patterns",
+      "description": "Counts Case subjects matching uppercase hyphenated code patterns.",
+      "category": "Naming and nomenclature",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Case", "where": { "field": "Subject", "operator": "matches_regex", "value": "\\b[A-Z]{2,}(?:-[A-Z0-9]+)+\\b", "case_sensitive": true } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} case subjects contain uppercase hyphenated codes.",
+      "evidence": { "object": "Case", "where": { "field": "Subject", "operator": "matches_regex", "value": "\\b[A-Z]{2,}(?:-[A-Z0-9]+)+\\b", "case_sensitive": true }, "fields": ["Id", "AccountId", "Subject", "Status"] }
+    },
+    {
+      "id": "case-origin-concentration",
+      "title": "Case origin is concentrated in one channel",
+      "description": "Calculates the largest Origin share across Cases.",
+      "category": "Support and internal language",
+      "severity": "low",
+      "calculation": { "aggregate": "largest_group_share", "object": "Case", "field": "Origin" },
+      "threshold": { "operator": "gt", "value": 0.45 },
+      "format": "percent",
+      "message": "The leading Case Origin accounts for {formatted_value} of cases."
+    },
+    {
+      "id": "unlinked-task-activity",
+      "title": "Tasks are not linked to a WhoId or WhatId",
+      "description": "Counts Tasks where both WhoId and WhatId are blank.",
+      "category": "Activity knowledge",
+      "severity": "medium",
+      "calculation": { "aggregate": "count", "object": "Task", "where": { "all": [
+        { "field": "WhoId", "operator": "is_blank" },
+        { "field": "WhatId", "operator": "is_blank" }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} tasks are not linked through WhoId or WhatId.",
+      "evidence": { "object": "Task", "where": { "all": [{ "field": "WhoId", "operator": "is_blank" }, { "field": "WhatId", "operator": "is_blank" }] }, "fields": ["Id", "OwnerId", "Subject", "Type", "ActivityDate"] }
+    },
+    {
+      "id": "task-shorthand-codes",
+      "title": "Task subjects contain shorthand code patterns",
+      "description": "Counts Task subjects matching uppercase token or hyphenated code patterns.",
+      "category": "Naming and nomenclature",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Task", "where": { "field": "Subject", "operator": "matches_regex", "value": "\\b(?:[A-Z]{2,6}|[A-Z]{2,}-[A-Z0-9]+)\\b", "case_sensitive": true } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} task subjects contain uppercase shorthand or codes.",
+      "evidence": { "object": "Task", "where": { "field": "Subject", "operator": "matches_regex", "value": "\\b(?:[A-Z]{2,6}|[A-Z]{2,}-[A-Z0-9]+)\\b", "case_sensitive": true }, "fields": ["Id", "WhatId", "OwnerId", "Subject"] }
+    },
+    {
+      "id": "task-owner-concentration",
+      "title": "Logged task activity is concentrated under one owner",
+      "description": "Calculates the largest OwnerId share across Tasks.",
+      "category": "Activity knowledge",
+      "severity": "medium",
+      "calculation": { "aggregate": "largest_group_share", "object": "Task", "field": "OwnerId" },
+      "threshold": { "operator": "gt", "value": 0.45 },
+      "format": "percent",
+      "message": "The leading task owner controls {formatted_value} of logged tasks."
+    },
+    {
+      "id": "support-heavy-low-pipeline-accounts",
+      "title": "Accounts have high support volume and limited opportunity amount",
+      "description": "Counts Accounts with at least three Cases and no more than $300,000 in related Opportunity Amount.",
+      "category": "Cross-object relationships",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Case", "local_field": "Id", "remote_field": "AccountId" }, "operator": "gte", "value": 3 },
+        { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId", "aggregate": "sum", "field": "Amount" }, "operator": "lte", "value": 300000 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have at least three cases and at most $300,000 in opportunity amount.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "Industry", "OwnerId"] }
+    },
+    {
+      "id": "revenue-heavy-support-light-accounts",
+      "title": "Accounts have substantial won revenue and limited case volume",
+      "description": "Counts Accounts with at least $400,000 won Opportunity Amount and no more than three Cases.",
+      "category": "Cross-object relationships",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId", "aggregate": "sum", "field": "Amount", "where": { "field": "IsWon", "operator": "is_true" } }, "operator": "gte", "value": 400000 },
+        { "relationship": { "object": "Case", "local_field": "Id", "remote_field": "AccountId" }, "operator": "lte", "value": 3 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have at least $400,000 won amount and no more than three cases.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "Industry", "OwnerId"] }
+    },
+    {
+      "id": "accounts-with-cases-no-contacts",
+      "title": "Accounts have cases but no contacts",
+      "description": "Counts Accounts with one or more Cases and zero Contacts.",
+      "category": "Cross-object relationships",
+      "severity": "high",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Case", "local_field": "Id", "remote_field": "AccountId" }, "operator": "gt", "value": 0 },
+        { "relationship": { "object": "Contact", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have cases but no contacts.",
+      "evidence": { "object": "Account", "fields": ["Id", "Name", "OwnerId"] }
+    },
+    {
+      "id": "sales-active-support-invisible-accounts",
+      "title": "Accounts have open opportunities and no cases",
+      "description": "Counts Accounts with at least one open Opportunity and zero Cases.",
+      "category": "Cross-object relationships",
+      "severity": "info",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "all": [
+        { "relationship": { "object": "Opportunity", "local_field": "Id", "remote_field": "AccountId", "where": { "field": "IsClosed", "operator": "is_false" } }, "operator": "gt", "value": 0 },
+        { "relationship": { "object": "Case", "local_field": "Id", "remote_field": "AccountId" }, "operator": "eq", "value": 0 }
+      ] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts have open opportunities and no cases."
+    },
+    {
+      "id": "generic-account-type-values",
+      "title": "Account Type uses generic values",
+      "description": "Counts Accounts whose Type is in an explicit generic-value list.",
+      "category": "Naming and nomenclature",
+      "severity": "low",
+      "calculation": { "aggregate": "count", "object": "Account", "where": { "field": "Type", "operator": "in", "value": ["Other", "Unknown", "N/A", "Misc", "General"] } },
+      "threshold": { "operator": "gt", "value": 0 },
+      "format": "number",
+      "message": "{formatted_value} accounts use a configured generic Type value.",
+      "evidence": { "object": "Account", "where": { "field": "Type", "operator": "in", "value": ["Other", "Unknown", "N/A", "Misc", "General"] }, "fields": ["Id", "Name", "Type", "OwnerId"] }
     }
   ]
 }
-

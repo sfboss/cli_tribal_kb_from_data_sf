@@ -1,0 +1,11 @@
+Id,AccountId,Name,StageName,Amount,OwnerId,CreatedById,CreatedDate,CloseDate,NextStep,IsClosed,IsWon,Type
+006A,001A,Acme Expansion,Proposal/Price Quote,180000,005A,005A,2026-03-01,2026-08-30,Complete security review,false,false,Expansion
+006B,001A,Acme Renewal FY27,Negotiation/Review,95000,005A,005A,2026-01-15,2026-07-15,,false,false,Renewal
+006C,001B,BBH-PLAT-24,Qualification,240000,005B,005A,2025-04-01,2025-11-30,Schedule discovery,false,false,New Business
+006D,001C,Cascade Pilot,Value Proposition,70000,005A,005B,2025-02-10,2025-10-12,,false,false,New Business
+006E,001D,Delta Advisory,Prospecting,45000,005A,005I,2025-01-10,2025-09-01,,false,false,New Business
+006F,001B,Bluebird Renewal,Closed Won,420000,005A,005A,2025-08-01,2026-01-20,Hand off to success,true,true,Renewal
+006G,001A,Acme Initial Platform,Closed Won,350000,005A,005A,2025-01-02,2025-06-30,Launch,true,true,New Business
+006H,001A,Acme Add-On,Closed Won,125000,005A,005B,2025-09-12,2025-12-15,Provision,true,true,Expansion
+006I,001C,Cascade Renewal,Closed Lost,220000,005B,005B,2025-04-01,2026-01-12,,true,false,Renewal
+006J,001F,INT-OPS-7,Qualification,1000,005A,005I,2026-05-01,2026-09-01,,false,false,Other

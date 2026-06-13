@@ -3,13 +3,14 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import date
 from pathlib import Path
 from typing import Sequence
 
 from tribal_kb import __version__
 from tribal_kb.data import DataCatalog, load_json
 from tribal_kb.models import AnalysisResult, TribalKBError
-from tribal_kb.report import write_html_report, write_json_report
+from tribal_kb.report import BUILTIN_TEMPLATES, write_html_report, write_json_report
 from tribal_kb.rules import RuleEngine, utc_now_iso, validate_rules_document
 
 
@@ -26,11 +27,19 @@ def build_parser() -> argparse.ArgumentParser:
     analyze.add_argument("-o", "--output", type=Path, default=Path("reports/tribal-knowledge.html"))
     analyze.add_argument("--json-output", type=Path, help="Also write machine-readable results.")
     analyze.add_argument("--evidence-limit", type=int, default=8)
+    analyze.add_argument(
+        "--template",
+        default="executive",
+        help="Built-in template name or path to a custom merge-field HTML template.",
+    )
     analyze.set_defaults(handler=run_analyze)
 
     validate = subparsers.add_parser("validate", help="Validate configs and evaluate rules.")
     add_common_arguments(validate)
     validate.set_defaults(handler=run_validate)
+
+    templates = subparsers.add_parser("templates", help="List built-in HTML report templates.")
+    templates.set_defaults(handler=run_templates)
     return parser
 
 
@@ -38,11 +47,17 @@ def add_common_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--data-dir", type=Path, required=True, help="Directory containing CSV exports.")
     parser.add_argument("--objects", type=Path, required=True, help="JSON object-to-CSV mapping.")
     parser.add_argument("--rules", type=Path, required=True, help="JSON rules document.")
+    parser.add_argument(
+        "--as-of",
+        type=parse_date_argument,
+        default=date.today(),
+        help="Stable ISO date used by relative-date rules (default: today).",
+    )
 
 
 def run_analyze(args: argparse.Namespace) -> int:
     catalog, rules_document = load_inputs(args)
-    engine = RuleEngine(catalog, evidence_limit=args.evidence_limit)
+    engine = RuleEngine(catalog, evidence_limit=args.evidence_limit, as_of=args.as_of)
     results = engine.evaluate_all(rules_document["rules"])
     report = rules_document.get("report", {})
     analysis = AnalysisResult(
@@ -52,16 +67,18 @@ def run_analyze(args: argparse.Namespace) -> int:
             "Signals, risks, and operating knowledge inferred from Salesforce data.",
         ),
         generated_at=utc_now_iso(),
+        as_of=args.as_of.isoformat(),
         source_summary=catalog.summary(),
         rules=results,
     )
-    write_html_report(analysis, args.output)
+    write_html_report(analysis, args.output, args.template)
     if args.json_output:
         write_json_report(analysis, args.json_output)
     counts = analysis.counts
     print(
         f"Wrote {args.output} "
-        f"({counts['finding']} findings, {counts['pass']} passes, {counts['error']} errors)"
+        f"({counts['finding']} findings, {counts['pass']} passes, "
+        f"{counts['skipped']} skipped, {counts['error']} errors)"
     )
     if args.json_output:
         print(f"Wrote {args.json_output}")
@@ -70,7 +87,7 @@ def run_analyze(args: argparse.Namespace) -> int:
 
 def run_validate(args: argparse.Namespace) -> int:
     catalog, rules_document = load_inputs(args)
-    results = RuleEngine(catalog).evaluate_all(rules_document["rules"])
+    results = RuleEngine(catalog, as_of=args.as_of).evaluate_all(rules_document["rules"])
     errors = [result for result in results if result.status == "error"]
     if errors:
         for result in errors:
@@ -81,6 +98,19 @@ def run_validate(args: argparse.Namespace) -> int:
         f"{sum(catalog.summary().values())} records."
     )
     return 0
+
+
+def run_templates(args: argparse.Namespace) -> int:
+    del args
+    print("\n".join(BUILTIN_TEMPLATES))
+    return 0
+
+
+def parse_date_argument(value: str) -> date:
+    try:
+        return date.fromisoformat(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"Expected ISO date YYYY-MM-DD, got '{value}'.") from exc
 
 
 def load_inputs(args: argparse.Namespace) -> tuple[DataCatalog, dict]:
@@ -107,4 +137,3 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -1,0 +1,11 @@
+Id,WhatId,WhoId,OwnerId,Subject,Type,ActivityDate
+00TA,001A,003A,005B,Call - Acme plant review,Call,2026-05-01
+00TB,001A,003B,005B,ACME QBR prep,Meeting,2026-05-02
+00TC,001A,003A,005A,Email renewal summary,Email,2026-05-03
+00TD,001B,003C,005C,Portal escalation,Call,2026-05-04
+00TE,006C,003C,005A,BBH discovery,Meeting,2026-05-05
+00TF,006D,003E,005B,Cascade follow up,Email,2026-05-06
+00TG,,,005A,ADMIN cleanup,Other,2026-05-07
+00TH,001C,003H,005A,RET-8 vendor call,Call,2026-05-08
+00TI,001C,003E,005A,POS-9 status,Call,2026-05-09
+00TJ,006A,003A,005B,Security review,Meeting,2026-05-10

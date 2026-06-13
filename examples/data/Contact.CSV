@@ -1,0 +1,10 @@
+Id,AccountId,Name,Email,Title,OwnerId,LastActivityDate
+003A,001A,Avery Stone,avery@acme.example,VP Operations,005A,2026-05-10
+003B,001A,Morgan Diaz,,Plant Manager,005B,2026-04-20
+003C,001B,Jordan Lee,jordan@bluebird.example,CFO,005A,2026-03-01
+003D,001B,Riley Chen,,Director,005A,2025-11-18
+003E,001C,Casey Smith,casey@gmail.com,Buyer,005B,2025-07-14
+003F,001E,Avery Stone,AVERY@ACME.EXAMPLE,Operations Lead,005B,2026-04-12
+003G,001F,Internal Desk,support@internal.example,Support,005A,2026-05-01
+003H,001C,Sam "SJ" Jones,sam@yahoo.com,Store Manager,005A,2026-01-05
+003I,001B,Taylor Reed,,Procurement,005B,2026-02-01

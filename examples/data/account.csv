@@ -1,0 +1,7 @@
+Id,Name,Industry,Type,OwnerId,CreatedById,ParentId,BillingState,LastActivityDate
+001A,Acme Manufacturing Inc,Manufacturing,Enterprise,005A,005I,,OH,2026-05-15
+001B,Bluebird Health,Healthcare,Enterprise,005A,005A,,NY,2026-02-18
+001C,Cascade Retail,Retail,Mid-Market,005B,005B,,CA,2025-08-01
+001D,Delta Services,Professional Services,SMB,005C,005I,,TX,2025-01-10
+001E,Acme Manufacturing LLC,Manufacturing,Enterprise,005B,005A,001A,OH,2026-04-10
+001F,House / Internal Accounts,Other,Other,005A,005I,,NY,2026-05-01

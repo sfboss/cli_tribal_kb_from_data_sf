@@ -1,8 +1,0 @@
-Id,AccountId,Name,StageName,Amount,OwnerId,CloseDate,NextStep
-006A,001A,Acme Expansion,Proposal/Price Quote,180000,005A,2026-08-30,Complete security review
-006B,001A,Acme Renewal,Negotiation/Review,95000,005A,2026-07-15,
-006C,001B,Bluebird Platform,Qualification,240000,005A,2025-11-30,Schedule discovery
-006D,001C,Cascade Pilot,Value Proposition,70000,005B,2025-10-12,
-006E,001D,Delta Advisory,Prospecting,45000,005A,2025-09-01,
-006F,001B,Bluebird Renewal,Closed Won,120000,005A,2026-01-20,Hand off to success
-

@@ -1,0 +1,5 @@
+Id,Name,Alias,IsActive,LastLoginDate,ProfileName
+005A,Alex Rivera,arivera,true,2026-06-10,Sales User
+005B,Blair Morgan,bmorgan,true,2026-06-11,Sales and Support
+005C,Cameron Patel,cpatel,false,2025-01-15,Support User
+005I,Integration Service,intsvc,true,2026-06-13,Integration User

@@ -1,0 +1,628 @@
+{
+    "title": "Salesforce Data Profiling",
+    "create_time": 1781289187.593165,
+    "update_time": 1781335976.00414,
+    "moderation_results": [],
+    "plugin_ids": null,
+    "conversation_id": "6a2c50de-9324-83ea-9cba-18a1f68148a5",
+    "conversation_template_id": null,
+    "gizmo_id": null,
+    "gizmo_type": null,
+    "is_archived": false,
+    "is_starred": null,
+    "safe_urls": [
+        "https://darioamodei.com/essay/machines-of-loving-grace",
+        "https://www.openai.com",
+        "buccifirm.com",
+        "https://docs.google.com/document/d/"
+    ],
+    "blocked_urls": [],
+    "default_model_slug": "gpt-5-5-thinking",
+    "atlas_mode_enabled": null,
+    "conversation_origin": null,
+    "is_read_only": null,
+    "voice": null,
+    "async_status": null,
+    "disabled_tool_ids": [],
+    "is_temporary_chat": false,
+    "is_do_not_remember": false,
+    "memory_scope": "global_enabled",
+    "context_scopes": [],
+    "sugar_item_id": null,
+    "sugar_item_visible": false,
+    "pinned_time": null,
+    "is_study_mode": false,
+    "owner": null,
+    "mapping": {
+        "ffd1532d-4d2b-45aa-b22e-7d35c5614d96": {
+            "id": "ffd1532d-4d2b-45aa-b22e-7d35c5614d96",
+            "message": null,
+            "parent": null,
+            "children": [
+                "cd76a912-04d2-4d36-a6e7-3e4d4e599cd7"
+            ]
+        },
+        "cd76a912-04d2-4d36-a6e7-3e4d4e599cd7": {
+            "id": "cd76a912-04d2-4d36-a6e7-3e4d4e599cd7",
+            "message": {
+                "id": "cd76a912-04d2-4d36-a6e7-3e4d4e599cd7",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": null,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": true,
+                "weight": 0.0,
+                "metadata": {
+                    "is_visually_hidden_from_conversation": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "ffd1532d-4d2b-45aa-b22e-7d35c5614d96",
+            "children": [
+                "f07f10f6-7aec-478e-bb6f-7bcf64070726"
+            ]
+        },
+        "f07f10f6-7aec-478e-bb6f-7bcf64070726": {
+            "id": "f07f10f6-7aec-478e-bb6f-7bcf64070726",
+            "message": {
+                "id": "f07f10f6-7aec-478e-bb6f-7bcf64070726",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": null,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": true,
+                "weight": 0.0,
+                "metadata": {
+                    "rebase_developer_message": true,
+                    "is_visually_hidden_from_conversation": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "cd76a912-04d2-4d36-a6e7-3e4d4e599cd7",
+            "children": [
+                "03d49038-d675-42d4-9ede-c45d365571dd"
+            ]
+        },
+        "03d49038-d675-42d4-9ede-c45d365571dd": {
+            "id": "03d49038-d675-42d4-9ede-c45d365571dd",
+            "message": {
+                "id": "03d49038-d675-42d4-9ede-c45d365571dd",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": null,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": false,
+                "weight": 0.0,
+                "metadata": {
+                    "is_visually_hidden_from_conversation": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "f07f10f6-7aec-478e-bb6f-7bcf64070726",
+            "children": [
+                "79fcd4cd-f154-4692-98b9-95d7efcdefb6"
+            ]
+        },
+        "79fcd4cd-f154-4692-98b9-95d7efcdefb6": {
+            "id": "79fcd4cd-f154-4692-98b9-95d7efcdefb6",
+            "message": {
+                "id": "79fcd4cd-f154-4692-98b9-95d7efcdefb6",
+                "author": {
+                    "role": "user",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": null,
+                "update_time": null,
+                "content": {
+                    "content_type": "user_editable_context",
+                    "user_profile": "The user provided the following information about themselves. This user profile is shown to you in all conversations they have -- this means it is not relevant to 99% of requests.\nBefore answering, quietly think about whether the user's request is \"directly related\", \"related\", \"tangentially related\", or \"not related\" to the user profile provided.\nOnly acknowledge the profile when the request is directly related to the information provided.\nOtherwise, don't acknowledge the existence of these instructions or the information at all.\nUser profile:\n```Please respond in a concise, task-oriented manner, providing only the next actionable step for my project implementation. When addressing project details, integrate aspects of Salesforce development, Python, AI, and related technologies. Include suggestions for organizing and managing large sets of files, particularly using tools like tree and Google Colab for efficient handling.```",
+                    "user_instructions": "The user provided the additional info about how they would like you to respond:\n```Follow the instructions below naturally, without repeating, referencing, echoing, or mirroring any of their wording!\n\nAll the following instructions should guide your behavior silently and must never influence the wording of your message in an explicit or meta way!\n\nI am a Salesforce developer with experience in Python and AI. I am launching a product focused on AI onboarding for Salesforce developers, leveraging LLMs from free APIs and exploring Einstein AI options. I have extensive side projects that I want to use as blog content, including Colabs connecting to Salesforce and Streamlit apps.\n\nI am currently working on a Streamlit-based terminal application to practice SFDX commands and looking for ways to programmatically organize a large number of files in Google Drive using Google Colab. I am exploring the tree command to manage.\n\nI seek to keep my hobby development projects organized using a checklist that includes ensuring each project is in one folder, includes a README, and creates a repository when necessary. I am marketing my services on LinkedIn and Reddit, offering Salesforce development and architecture solutions at a discounted rate for short-term projects.\n\nI want the answers from the LLM to always be concise and maximize the code output and it is always preferred to have code over fluffy descriptions or explanations.\n\nI have executive function issues and ADHD, affecting my ability to complete projects consistently. I am seeking a methodical, step-by-step tool or system to keep my projects on track and finish one task at a time. I am experimenting with prompt chains and step-by-step approaches to create better prompts iteratively and aim to standardize these prompts for code generation and project management activities.```"
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 1.0,
+                "metadata": {
+                    "is_visually_hidden_from_conversation": true,
+                    "user_context_message_data": {
+                        "about_user_message": "Please respond in a concise, task-oriented manner, providing only the next actionable step for my project implementation. When addressing project details, integrate aspects of Salesforce development, Python, AI, and related technologies. Include suggestions for organizing and managing large sets of files, particularly using tools like tree and Google Colab for efficient handling.",
+                        "about_model_message": "I am a Salesforce developer with experience in Python and AI. I am launching a product focused on AI onboarding for Salesforce developers, leveraging LLMs from free APIs and exploring Einstein AI options. I have extensive side projects that I want to use as blog content, including Colabs connecting to Salesforce and Streamlit apps.\n\nI am currently working on a Streamlit-based terminal application to practice SFDX commands and looking for ways to programmatically organize a large number of files in Google Drive using Google Colab. I am exploring the tree command to manage.\n\nI seek to keep my hobby development projects organized using a checklist that includes ensuring each project is in one folder, includes a README, and creates a repository when necessary. I am marketing my services on LinkedIn and Reddit, offering Salesforce development and architecture solutions at a discounted rate for short-term projects.\n\nI want the answers from the LLM to always be concise and maximize the code output and it is always preferred to have code over fluffy descriptions or explanations.\n\nI have executive function issues and ADHD, affecting my ability to complete projects consistently. I am seeking a methodical, step-by-step tool or system to keep my projects on track and finish one task at a time. I am experimenting with prompt chains and step-by-step approaches to create better prompts iteratively and aim to standardize these prompts for code generation and project management activities."
+                    },
+                    "is_user_system_message": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "03d49038-d675-42d4-9ede-c45d365571dd",
+            "children": [
+                "406e4f78-2fbb-4132-98ce-98d6d5363f15"
+            ]
+        },
+        "406e4f78-2fbb-4132-98ce-98d6d5363f15": {
+            "id": "406e4f78-2fbb-4132-98ce-98d6d5363f15",
+            "message": {
+                "id": "406e4f78-2fbb-4132-98ce-98d6d5363f15",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": null,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 1.0,
+                "metadata": {
+                    "is_contextual_answers_system_message": true,
+                    "contextual_answers_message_type": "identity_prompt",
+                    "is_visually_hidden_from_conversation": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "79fcd4cd-f154-4692-98b9-95d7efcdefb6",
+            "children": [
+                "2ed1bb4b-a89b-4a36-8bd7-e149d50cca33"
+            ]
+        },
+        "2ed1bb4b-a89b-4a36-8bd7-e149d50cca33": {
+            "id": "2ed1bb4b-a89b-4a36-8bd7-e149d50cca33",
+            "message": {
+                "id": "2ed1bb4b-a89b-4a36-8bd7-e149d50cca33",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289187.002665,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 0.0,
+                "metadata": {
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_source": null,
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "is_visually_hidden_from_conversation": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "406e4f78-2fbb-4132-98ce-98d6d5363f15",
+            "children": [
+                "cdc657d4-2523-4e31-8680-85e7f629388e"
+            ]
+        },
+        "cdc657d4-2523-4e31-8680-85e7f629388e": {
+            "id": "cdc657d4-2523-4e31-8680-85e7f629388e",
+            "message": {
+                "id": "cdc657d4-2523-4e31-8680-85e7f629388e",
+                "author": {
+                    "role": "user",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289186.6858048,
+                "update_time": 1781289348.711836,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        "Can you come up with an exhaustive prolific list of deterministic checks that can be done on Salesforce data that will be able to take CSVs of CRM data and process them to find tribal knowledge we can infer based on how the data in things like cases are for internal communication and things where users may have nomenclature or nicknames or something and even advanced checks like being able to give  text based observations of things that may involve analyzing account and contacts together, or opps and accounts, with both having a reference to the local file with user data in csv so that we can give insights about the mysterious sales people who are silent killers and have the lions share of things without having any other major footprint in the system,  since there are always things like workarounds that do what things like account teams can do, but people instead of these little mechanisms to get users what they need and if it works they don’t care to change it or touch it really… I just feel like every single data point object name included for custom objects tells something about the business and we can get so much insight if we just objectively try and focus on that as the goal and not any type of qa or audit or advice about how to do the data model differently or anything… just facts that are one sentence statement that we can assert because some programmatic rule was met and we have determined that to be lucrative.   If we can simply just start by compiling a list of the rules, meaning the check we are doing, and then without exception for everyone we have to write a pseudo formula of how based on the data is calculated, with nothing added that is ambiguous or subjective and would leave someone confused on how to implement.    I suppose it could be described as a ydata profiling type output where the things we are providing are special sauce Salesforce specifics that based on what is always called tribal knowledge aren’t so black boxed so long as someone can be in the context of a folder of csvs from their data export they did.   So no implementation technical details here more just the business rules but that deterministic calc can be as descriptive as it needs to to solve the requirement"
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 1.0,
+                "metadata": {
+                    "dictation": false,
+                    "triggered_by_system_hint_suggestion": false,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_source": null,
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "resolved_model_slug": "gpt-5-5-thinking",
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "2ed1bb4b-a89b-4a36-8bd7-e149d50cca33",
+            "children": [
+                "29a8f50e-4830-4f8d-80ec-56a4a04efeea"
+            ]
+        },
+        "29a8f50e-4830-4f8d-80ec-56a4a04efeea": {
+            "id": "29a8f50e-4830-4f8d-80ec-56a4a04efeea",
+            "message": {
+                "id": "29a8f50e-4830-4f8d-80ec-56a4a04efeea",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289187.305857,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 1.0,
+                "metadata": {
+                    "is_contextual_answers_system_message": true,
+                    "is_visually_hidden_from_conversation": true,
+                    "command": "prompt",
+                    "contextual_answers_message_type": "sources_and_filters_prompt",
+                    "chime_version": 1,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "parent_id": "cdc657d4-2523-4e31-8680-85e7f629388e",
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "cdc657d4-2523-4e31-8680-85e7f629388e",
+            "children": [
+                "a30dab82-4be2-4de4-b74b-9d72e0cadf0d"
+            ]
+        },
+        "a30dab82-4be2-4de4-b74b-9d72e0cadf0d": {
+            "id": "a30dab82-4be2-4de4-b74b-9d72e0cadf0d",
+            "message": {
+                "id": "a30dab82-4be2-4de4-b74b-9d72e0cadf0d",
+                "author": {
+                    "role": "assistant",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289187.3967798,
+                "update_time": null,
+                "content": {
+                    "content_type": "model_editable_context",
+                    "model_set_context": "",
+                    "repository": null,
+                    "repo_summary": null,
+                    "structured_context": null
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 1.0,
+                "metadata": {
+                    "search_result_groups": [],
+                    "chime_version": 1,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "can_save": false,
+                    "parent_id": "29a8f50e-4830-4f8d-80ec-56a4a04efeea",
+                    "model_switcher_deny": []
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "29a8f50e-4830-4f8d-80ec-56a4a04efeea",
+            "children": [
+                "efbcecff-3aa6-44b9-b6db-ba60cbbbaf3b"
+            ]
+        },
+        "efbcecff-3aa6-44b9-b6db-ba60cbbbaf3b": {
+            "id": "efbcecff-3aa6-44b9-b6db-ba60cbbbaf3b",
+            "message": {
+                "id": "efbcecff-3aa6-44b9-b6db-ba60cbbbaf3b",
+                "author": {
+                    "role": "system",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289187.6535249,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        ""
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": null,
+                "weight": 0.0,
+                "metadata": {
+                    "chime_version": 1,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "parent_id": "a30dab82-4be2-4de4-b74b-9d72e0cadf0d",
+                    "is_visually_hidden_from_conversation": true,
+                    "can_save": false
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "a30dab82-4be2-4de4-b74b-9d72e0cadf0d",
+            "children": [
+                "e71de151-f0db-48fc-b307-098bafc292f6"
+            ]
+        },
+        "e71de151-f0db-48fc-b307-098bafc292f6": {
+            "id": "e71de151-f0db-48fc-b307-098bafc292f6",
+            "message": {
+                "id": "e71de151-f0db-48fc-b307-098bafc292f6",
+                "author": {
+                    "role": "assistant",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289188.242627,
+                "update_time": null,
+                "content": {
+                    "content_type": "thoughts",
+                    "thoughts": [],
+                    "source_analysis_msg_id": "e279cb94-4697-49b9-b083-4db6cb2466b1"
+                },
+                "status": "finished_successfully",
+                "end_turn": false,
+                "weight": 1.0,
+                "metadata": {
+                    "reasoning_status": "is_reasoning",
+                    "citations": [],
+                    "content_references": [],
+                    "resolved_model_slug": "gpt-5-5-thinking",
+                    "hide_inline_actions": true,
+                    "disable_turn_actions": true,
+                    "chime_version": 1,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "parent_id": "e279cb94-4697-49b9-b083-4db6cb2466b1",
+                    "classifier_response": "default",
+                    "reasoning_start_time": 1781289187.3194013,
+                    "permissions": [
+                        {
+                            "type": "notification",
+                            "status": "requested",
+                            "notification_channel_id": "thinking",
+                            "notification_channel_name": "Thinking",
+                            "notification_priority": 4
+                        }
+                    ],
+                    "skip_reasoning_title": "Skip",
+                    "can_save": false,
+                    "model_switcher_deny": []
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "efbcecff-3aa6-44b9-b6db-ba60cbbbaf3b",
+            "children": [
+                "32433711-b2fe-430a-a726-e596dcc003b0"
+            ]
+        },
+        "32433711-b2fe-430a-a726-e596dcc003b0": {
+            "id": "32433711-b2fe-430a-a726-e596dcc003b0",
+            "message": {
+                "id": "32433711-b2fe-430a-a726-e596dcc003b0",
+                "author": {
+                    "role": "assistant",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289187.346883,
+                "update_time": null,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        "I’ll structure this as a rule catalog: each row has the deterministic check, the calculation, and the one-sentence fact it can emit. I’ll keep it implementation-neutral but precise enough to translate into pandas/SOQL-style logic later."
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": false,
+                "weight": 1.0,
+                "metadata": {
+                    "citations": [],
+                    "content_references": [],
+                    "story_events": [],
+                    "resolved_model_slug": "gpt-5-5-thinking",
+                    "is_thinking_preamble_message": true,
+                    "hide_inline_actions": true,
+                    "disable_turn_actions": true,
+                    "chime_version": 1,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "can_save": true,
+                    "parent_id": "e71de151-f0db-48fc-b307-098bafc292f6",
+                    "model_switcher_deny": []
+                },
+                "recipient": "all",
+                "channel": "commentary"
+            },
+            "parent": "e71de151-f0db-48fc-b307-098bafc292f6",
+            "children": [
+                "7199ef7a-e0c0-4f90-b2bc-8222dc81ade8"
+            ]
+        },
+        "7199ef7a-e0c0-4f90-b2bc-8222dc81ade8": {
+            "id": "7199ef7a-e0c0-4f90-b2bc-8222dc81ade8",
+            "message": {
+                "id": "7199ef7a-e0c0-4f90-b2bc-8222dc81ade8",
+                "author": {
+                    "role": "assistant",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289191.362444,
+                "update_time": null,
+                "content": {
+                    "content_type": "reasoning_recap",
+                    "content": "Thought for 4s"
+                },
+                "status": "finished_successfully",
+                "end_turn": false,
+                "weight": 1.0,
+                "metadata": {
+                    "reasoning_status": "reasoning_ended",
+                    "finished_duration_sec": 4,
+                    "reasoning_start_time": 1781289187.3194013,
+                    "reasoning_end_time": 1781289191.3544035,
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "can_save": false,
+                    "parent_id": "ff8391c6-256b-48ac-93a9-4cd7dbcb4b3b",
+                    "model_switcher_deny": []
+                },
+                "recipient": "all",
+                "channel": null
+            },
+            "parent": "32433711-b2fe-430a-a726-e596dcc003b0",
+            "children": [
+                "19a0f64f-2319-4e29-af57-3087c9ffebb3"
+            ]
+        },
+        "19a0f64f-2319-4e29-af57-3087c9ffebb3": {
+            "id": "19a0f64f-2319-4e29-af57-3087c9ffebb3",
+            "message": {
+                "id": "19a0f64f-2319-4e29-af57-3087c9ffebb3",
+                "author": {
+                    "role": "assistant",
+                    "name": null,
+                    "metadata": {}
+                },
+                "create_time": 1781289187.346883,
+                "update_time": 1781335976.003892,
+                "content": {
+                    "content_type": "text",
+                    "parts": [
+                        "Below is a prolific deterministic rule catalog for **Salesforce CSV tribal-knowledge profiling**. Each rule is designed to produce **one factual observation** from exported CRM CSVs. No recommendations, no model critique, no subjective interpretation.\n\nAssumption: every CSV is a Salesforce object export, with file names like `Account.csv`, `Case.csv`, `Opportunity.csv`, `Contact.csv`, `Task.csv`, `Event.csv`, `User.csv`, custom objects, etc.\n\n---\n\n# Salesforce Tribal Knowledge Rule Catalog\n\n## 0. Universal Object/File Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 1 | Object exists in export | `file_exists(\"<Object>.csv\") = TRUE` | `The export contains <Object>, meaning this business process leaves structured data in Salesforce.` |\n| 2 | Object appears unused | `row_count(<Object>) = 0` | `<Object> exists in the export but contains no records.` |\n| 3 | Object is heavily used | `row_count(<Object>) >= percentile_90(row_count(all_objects))` | `<Object> is one of the most populated objects in the export.` |\n| 4 | Custom object presence | `object_name ENDSWITH \"__c\"` | `<Object__c> is a custom object and likely represents business-specific process knowledge.` |\n| 5 | Custom object with high volume | `object_name ENDSWITH \"__c\" AND row_count(object) >= 1000` | `<Object__c> is a high-volume custom object and likely captures an important internal workflow.` |\n| 6 | Custom object with owner | `has_column(Object, \"OwnerId\") AND count_distinct(OwnerId) > 1` | `<Object> records are actively owned by multiple users.` |\n| 7 | Object with notes-like text | `count(columns where type=inferred_text AND avg_length > 100) > 0` | `<Object> contains long-form text fields that may contain internal language, explanations, or process workarounds.` |\n| 8 | Object with coded nomenclature | `count_distinct(tokens_from_text_fields WHERE token matches \"[A-Z]{2,}[-_][A-Z0-9]+\") > 0` | `<Object> contains repeated code-like terms in text fields.` |\n| 9 | Object with status lifecycle | `has_column(\"Status\") OR has_column(\"StageName\") OR has_column(\"Lifecycle__c\")` | `<Object> has a lifecycle/status structure represented directly in the data.` |\n| 10 | Object with implicit lifecycle | `date_columns_count >= 3 AND status_column_missing` | `<Object> may encode lifecycle through dates rather than an explicit status field.` |\n\n---\n\n## 1. Ownership, Hidden Power Users, and Silent Killers\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 11 | Owner concentration by object | `owner_share = count_by(OwnerId)/row_count(Object); max(owner_share) >= 0.25` | `<User> owns <X>% of <Object> records, the largest ownership share in that object.` |\n| 12 | Silent high-volume owner | `OwnerId volume percentile >= 90 AND User.LastLoginDate IS NULL OR older_than(180 days)` | `<User> owns a high share of records but has little recent login activity.` |\n| 13 | Silent opportunity owner | `Opportunity count_by(OwnerId) percentile >= 90 AND Task count_by(OwnerId) percentile <= 25` | `<User> owns many opportunities but creates relatively few logged tasks.` |\n| 14 | Silent case owner | `Case count_by(OwnerId) percentile >= 90 AND CaseComment count_by(CreatedById linked to cases owned by OwnerId) percentile <= 25` | `<User> owns many cases but has relatively low visible case-comment activity.` |\n| 15 | Revenue-heavy low-footprint seller | `sum(Opportunity.Amount WHERE OwnerId=user AND IsWon=TRUE) percentile >= 90 AND count(Task WHERE OwnerId=user) percentile <= 25` | `<User> is associated with high won revenue while having a low logged activity footprint.` |\n| 16 | High close-rate low-volume owner | `won_count/closed_count >= 0.75 AND closed_count >= minimum_sample` | `<User> has a high opportunity win rate across closed opportunities.` |\n| 17 | Low close-rate high-volume owner | `closed_count percentile >= 75 AND won_count/closed_count <= 0.25` | `<User> owns many closed opportunities with a low win rate.` |\n| 18 | One user dominates a record type | `max(count_by(OwnerId,RecordTypeId)/count_by(RecordTypeId)) >= 0.5` | `<User> owns at least half of <RecordType> records for <Object>.` |\n| 19 | User dominates a geography | `count_by(OwnerId, BillingState)/count_by(BillingState) >= 0.5` | `<User> owns at least half of records in <BillingState>.` |\n| 20 | User dominates named account segment | `count_by(OwnerId, Account.Type)/count_by(Account.Type) >= 0.5` | `<User> owns a majority of accounts in the <Account.Type> segment.` |\n| 21 | User owns accounts and opps disproportionately | `account_owner_share >= 2 * median_owner_share AND opp_owner_share >= 2 * median_owner_share` | `<User> has above-normal ownership concentration across both Accounts and Opportunities.` |\n| 22 | User owns opps without owning accounts | `Opportunity.OwnerId=user AND Opportunity.Account.OwnerId != user; ratio >= 0.5` | `<User> owns many opportunities on accounts owned by other users.` |\n| 23 | User owns accounts without opp footprint | `Account.OwnerId=user AND count(Opportunity.AccountId linked to user-owned accounts)=0` | `<User> owns accounts that have no related opportunities in the export.` |\n| 24 | Shadow account manager via activities | `Task.WhatId Account owned_by != Task.OwnerId; count_by(Task.OwnerId,AccountId) high` | `<User> frequently logs activity on accounts they do not own.` |\n| 25 | Shadow seller via opp activity | `Task.WhatId Opportunity owned_by != Task.OwnerId; count_by(Task.OwnerId,OpportunityId) high` | `<User> frequently works opportunities they do not own.` |\n| 26 | User receives frequent reassignment | `count(records where previous_owner != current_owner AND current_owner=user)` | `<User> frequently receives reassigned records.` |\n| 27 | User frequently gives away ownership | `count(records where previous_owner=user AND current_owner != user)` | `<User> frequently transfers records to other owners.` |\n| 28 | Ownership with no activity | `records owned_by user AND no Task/Event/EmailMessage in last N days` | `<User> owns records with no recent logged activity.` |\n| 29 | Activity-only contributor | `Task/Event count percentile >= 90 AND owned_record_count percentile <= 25` | `<User> contributes many activities while owning relatively few primary records.` |\n| 30 | Queue-as-owner pattern | `OwnerId prefix = Group/Queue OR Owner.Name contains \"Queue\"` | `<Object> records are assigned to queues rather than individual users.` |\n\n---\n\n## 2. Account Tribal-Knowledge Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 31 | Account name variants | `normalized_name duplicates where normalize removes punctuation/legal suffixes/case` | `Multiple Account records appear to represent the same normalized company name.` |\n| 32 | Legal suffix inconsistency | `same normalized_name with variants LLC/Inc/Corp/Co blank` | `Account naming varies by legal suffix for the same normalized company name.` |\n| 33 | Nickname account names | `Account.Name contains quoted text OR parentheses OR slash` | `Some Account names contain aliases, nicknames, or alternate identifiers.` |\n| 34 | Account hierarchy depth | `max(depth(parent_account_chain)) >= 3` | `The account hierarchy reaches at least <N> levels deep.` |\n| 35 | Orphaned child accounts | `ParentId not null AND ParentId not in Account.Id` | `Some accounts reference parent accounts not present in the export.` |\n| 36 | High-value parent account | `sum(Opportunity.Amount by ultimate_parent) percentile >= 90` | `<Ultimate Parent Account> has one of the largest related opportunity amounts.` |\n| 37 | Account with many contacts | `count(Contact WHERE AccountId=account) percentile >= 95` | `<Account> has an unusually large number of contacts.` |\n| 38 | Account with no contacts | `count(Contact WHERE AccountId=account)=0` | `<Account> has no related contacts in the export.` |\n| 39 | Account with contacts but no opps | `contact_count > 0 AND opportunity_count = 0` | `<Account> has contacts but no related opportunities.` |\n| 40 | Account with opps but no contacts | `opportunity_count > 0 AND contact_count = 0` | `<Account> has opportunities but no related contacts.` |\n| 41 | Account with cases but no contacts | `case_count > 0 AND contact_count = 0` | `<Account> has cases but no related contacts.` |\n| 42 | Account is support-heavy | `case_count percentile >= 90 AND opportunity_amount percentile <= 50` | `<Account> has high support volume relative to opportunity value.` |\n| 43 | Account is revenue-heavy support-light | `won_amount percentile >= 90 AND case_count percentile <= 25` | `<Account> has high won revenue and comparatively low case volume.` |\n| 44 | Account is sales-active but support-invisible | `open_opp_count > 0 AND case_count = 0` | `<Account> has active opportunities but no related cases.` |\n| 45 | Account is support-active but sales-invisible | `open_case_count > 0 AND opportunity_count = 0` | `<Account> has active cases but no related opportunities.` |\n| 46 | Account used as bucket | `Account.Name contains \"Misc\" OR \"Unknown\" OR \"Other\" OR \"House\" OR \"Test\" OR \"Internal\"` | `<Account> appears to function as a bucket account based on its name.` |\n| 47 | Account owner mismatch with contacts | `Contact.OwnerId != Account.OwnerId for ratio >= threshold` | `<Account> has many contacts owned by users other than the account owner.` |\n| 48 | Account owner mismatch with opps | `Opportunity.OwnerId != Account.OwnerId for ratio >= threshold` | `<Account> has many opportunities owned by users other than the account owner.` |\n| 49 | Account geography inconsistency | `Account.BillingState != Contact.MailingState for linked contacts ratio >= threshold` | `<Account> has contacts with mailing states different from the account billing state.` |\n| 50 | Account type overloaded | `count_distinct(Account.Type) small AND row_count large` | `Account.Type has low variety relative to account volume.` |\n\n---\n\n## 3. Contact and Relationship Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 51 | Duplicate contacts by email | `count_by(lower(Email)) > 1` | `Multiple contacts share the same email address.` |\n| 52 | Same person across accounts | `same lower(Email) linked to count_distinct(AccountId)>1` | `The same email address appears on contacts under multiple accounts.` |\n| 53 | Generic contact email | `Email local_part IN [\"info\",\"sales\",\"support\",\"admin\",\"contact\",\"hello\"]` | `Some contacts use generic role-based email addresses.` |\n| 54 | Personal email on business contact | `Email domain IN gmail/yahoo/outlook/aol/icloud` | `Some contacts use personal email domains.` |\n| 55 | Contact nickname | `FirstName OR LastName contains parentheses/quotes OR Name contains nickname markers` | `Some contact names include nicknames or alternate identifiers.` |\n| 56 | Contact title vocabulary | `top_tokens(Contact.Title)` | `Contact titles frequently include <Token>.` |\n| 57 | Account has executive contacts | `Contact.Title contains CEO/CFO/COO/Founder/President/Owner` | `<Account> has one or more executive-level contacts.` |\n| 58 | Account lacks named decision-maker | `no Contact.Title matching executive/buyer/decision-maker tokens` | `<Account> has no contact title matching common decision-maker terms.` |\n| 59 | Contact owner differs from account owner | `Contact.OwnerId != Account.OwnerId` | `<Contact> is owned by a different user than the related account.` |\n| 60 | Contact activity without opportunity contact role | `Task/Event linked to Contact AND no OpportunityContactRole for Contact` | `<Contact> has activity but does not appear in opportunity contact roles.` |\n| 61 | Contact appears in many opportunities | `count(OpportunityContactRole by ContactId) percentile >= 95` | `<Contact> is associated with an unusually high number of opportunities.` |\n| 62 | Contact appears as operational hub | `case_count + task_count + opp_contact_role_count percentile >= 95` | `<Contact> appears across many sales and support records.` |\n| 63 | Stale important contact | `executive_contact AND LastActivityDate older_than N days` | `<Contact> appears to be an executive contact with no recent logged activity.` |\n| 64 | Contact without email | `Email IS NULL` | `<Contact> has no email address.` |\n| 65 | Contact without phone | `Phone IS NULL AND MobilePhone IS NULL` | `<Contact> has no phone or mobile phone value.` |\n\n---\n\n## 4. Opportunity and Sales Process Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 66 | Stage concentration | `max(count_by(StageName)/row_count(Opportunity)) >= threshold` | `A large share of opportunities are in <StageName>.` |\n| 67 | Owner-stage concentration | `count_by(OwnerId,StageName)/count_by(StageName) >= threshold` | `<User> owns a large share of opportunities in <StageName>.` |\n| 68 | Account-stage concentration | `count_by(AccountId,StageName)/count_by(AccountId) >= threshold` | `<Account> has most of its opportunities in <StageName>.` |\n| 69 | Open opps past close date | `IsClosed=FALSE AND CloseDate < export_date` | `Some open opportunities have close dates before the export date.` |\n| 70 | Won opps with zero amount | `IsWon=TRUE AND Amount <= 0 OR Amount IS NULL` | `Some won opportunities have no positive amount.` |\n| 71 | Lost opps with high amount | `IsWon=FALSE AND IsClosed=TRUE AND Amount percentile >= 95` | `Some lost opportunities have unusually high amounts.` |\n| 72 | Silent won opportunity | `IsWon=TRUE AND no Task/Event linked within N days before CloseDate` | `<Opportunity> was won without nearby logged activity.` |\n| 73 | Activity-heavy lost opportunity | `IsClosed=TRUE AND IsWon=FALSE AND activity_count percentile >= 95` | `<Opportunity> was lost despite unusually high logged activity.` |\n| 74 | Fast win | `IsWon=TRUE AND CloseDate - CreatedDate <= percentile_10(won_cycle_days)` | `<Opportunity> was won faster than most won opportunities.` |\n| 75 | Slow win | `IsWon=TRUE AND CloseDate - CreatedDate >= percentile_90(won_cycle_days)` | `<Opportunity> took longer to win than most won opportunities.` |\n| 76 | Stage skipped by record history | `OpportunityHistory StageName sequence missing common intermediate stage` | `<Opportunity> moved from <Stage A> to <Stage B> without a recorded intermediate stage.` |\n| 77 | Reopened opportunity | `OpportunityHistory has IsClosed TRUE then later FALSE` | `<Opportunity> was reopened after being closed.` |\n| 78 | Close date pushed repeatedly | `count(OpportunityHistory where Field=\"CloseDate\") >= threshold` | `<Opportunity> had its close date changed multiple times.` |\n| 79 | Amount changed repeatedly | `count(OpportunityHistory where Field=\"Amount\") >= threshold` | `<Opportunity> had its amount changed multiple times.` |\n| 80 | Opportunity owner changed before close | `owner_change_date within N days before CloseDate` | `<Opportunity> changed owners shortly before closing.` |\n| 81 | Opportunity owner differs from creator | `OwnerId != CreatedById` | `<Opportunity> is currently owned by someone other than its creator.` |\n| 82 | Account has many open opps | `count(open opportunities by AccountId) percentile >= 95` | `<Account> has an unusually high number of open opportunities.` |\n| 83 | Account has repeated lost opps | `count(lost opportunities by AccountId) >= threshold` | `<Account> has multiple closed-lost opportunities.` |\n| 84 | Account has repeat wins | `count(won opportunities by AccountId) >= threshold` | `<Account> has multiple won opportunities.` |\n| 85 | Opportunity name contains internal code | `Opportunity.Name matches code pattern` | `<Opportunity> name contains a code-like term.` |\n| 86 | Opportunity name contains renewal | `Opportunity.Name contains Renewal/Renew/Expansion/Upsell/Cross-sell` | `<Opportunity> appears to represent a renewal, expansion, upsell, or cross-sell based on its name.` |\n| 87 | Opportunity product concentration | `OpportunityLineItem count_by(Product2Id)/total >= threshold` | `<Product> appears on a large share of opportunity line items.` |\n| 88 | Account buys same product repeatedly | `count(won OpportunityLineItem by AccountId,Product2Id) >= threshold` | `<Account> repeatedly buys <Product>.` |\n| 89 | Seller product specialization | `count(won OpportunityLineItem by OwnerId,Product2Id)/count(won OLI by Product2Id) >= threshold` | `<User> owns a large share of won opportunities involving <Product>.` |\n| 90 | Discount pattern by owner | `avg(Discount__c or UnitPrice/ListPrice ratio by OwnerId) outlier high` | `<User> has an unusually high average discount pattern.` |\n\n---\n\n## 5. Case, Support, and Internal Communication Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 91 | Case subject repeated | `count_by(normalize(Case.Subject)) >= threshold` | `The same normalized case subject appears repeatedly.` |\n| 92 | Case nickname vocabulary | `top_tokens(Case.Subject + Description + Comments)` | `Case text frequently uses the term <Token>.` |\n| 93 | Case code vocabulary | `tokens matching \"[A-Z]{2,}[-_][A-Z0-9]+\" count >= threshold` | `Case text contains repeated code-like identifiers.` |\n| 94 | Case internal shorthand | `tokens length 2-5 uppercase AND frequency >= threshold AND not standard stopword` | `Case text repeatedly uses uppercase shorthand terms such as <Term>.` |\n| 95 | Case workaround language | `text contains \"workaround\" OR \"temp fix\" OR \"manual\" OR \"hack\" OR \"bypass\"` | `Some cases explicitly reference workaround-style language.` |\n| 96 | Case escalation language | `text contains \"escalated\" OR \"urgent\" OR \"blocked\" OR \"sev\" OR \"critical\"` | `Some cases contain explicit escalation language.` |\n| 97 | Case blame/routing language | `text contains \"not our team\" OR \"belongs to\" OR \"route to\" OR \"send to\"` | `Some cases contain routing or ownership-transfer language.` |\n| 98 | Case tribal contact mention | `case text contains user full name OR alias not equal owner/creator` | `Case text mentions internal users who are not the case owner or creator.` |\n| 99 | Case solved by unofficial person | `Comment.CreatedById != Case.OwnerId AND last_comment_before_closed by non-owner` | `<User> provided the final comment before case closure on cases they did not own.` |\n| 100 | Silent closer | `Case.ClosedBy inferred from LastModifiedById at status closed AND comment_count low` | `<User> closes cases with relatively little visible comment activity.` |\n| 101 | Comment-heavy case owner | `avg(comment_count by Case.OwnerId) percentile >= 90` | `<User> owns cases with unusually high comment volume.` |\n| 102 | Fast closer | `median(Case.ClosedDate - CreatedDate by OwnerId) percentile <= 10` | `<User> has one of the fastest median case closure times.` |\n| 103 | Slow closer | `median(Case.ClosedDate - CreatedDate by OwnerId) percentile >= 90` | `<User> has one of the slowest median case closure times.` |\n| 104 | Case reopen pattern | `case history Status closed then later non-closed` | `<Case> was reopened after closure.` |\n| 105 | Case owner ping-pong | `count(owner changes by CaseId) >= threshold` | `<Case> changed owners multiple times.` |\n| 106 | Case queue trap | `Case.OwnerId queue AND age_open >= percentile_90(open_case_age)` | `<Case> is old and still owned by a queue.` |\n| 107 | Account with repeat case issue | `count_by(AccountId, normalized_subject) >= threshold` | `<Account> has repeated cases with the same normalized subject.` |\n| 108 | Product support hotspot | `count(Case by Product__c or Asset.Product2Id) percentile >= 90` | `<Product> appears on a high number of cases.` |\n| 109 | Case origin concentration | `max(count_by(Origin)/row_count(Case)) >= threshold` | `Most cases originate from <Origin>.` |\n| 110 | Case priority mismatch | `Priority low AND text contains urgent/sev/critical` | `Some low-priority cases contain urgent or critical language.` |\n| 111 | Case type overloaded | `Case.Type has low cardinality and high null/Other share` | `Case Type is concentrated in a small number of values or generic values.` |\n| 112 | Internal-only vocabulary | `term appears in Case comments but not Account/Opportunity names` | `<Term> appears in case communication but not in sales/account naming fields.` |\n| 113 | Customer-facing repeated complaint | `same phrase appears across cases from distinct AccountIds` | `The phrase <Phrase> appears across cases for multiple accounts.` |\n| 114 | Case comments mention external system | `text contains Jira/Slack/Teams/Excel/Spreadsheet/Email/Portal` | `Case text references external tools such as <Tool>.` |\n| 115 | Manual process marker | `text contains \"manually\" OR \"manual step\" OR \"spreadsheet\" OR \"export/import\"` | `Some case records explicitly reference manual process steps.` |\n\n---\n\n## 6. Activity, Tasks, Events, and Email Footprint Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 116 | Activity concentration by user | `count(Task+Event by OwnerId)/total_activity >= threshold` | `<User> owns a large share of logged activities.` |\n| 117 | Activity concentration by account | `count(Activity by AccountId)/total_activity >= threshold` | `<Account> has a large share of logged activities.` |\n| 118 | Activity without related record | `WhoId IS NULL AND WhatId IS NULL` | `Some activities are not linked to a contact, lead, account, opportunity, or case.` |\n| 119 | Activity on closed opp | `Task.WhatId=Opportunity.Id AND Opportunity.IsClosed=TRUE AND Task.ActivityDate > CloseDate` | `Some activities occurred after opportunity closure.` |\n| 120 | Activity before opp created | `Task.WhatId=Opportunity.Id AND Task.CreatedDate < Opportunity.CreatedDate` | `Some activities appear to predate their related opportunity record.` |\n| 121 | Activity after account inactive | `ActivityDate > Account.LastModifiedDate by large margin AND Account has no open opp/case` | `<Account> has activity after its last major account update and no open records.` |\n| 122 | Task subject vocabulary | `top_tokens(Task.Subject)` | `Task subjects frequently include <Token>.` |\n| 123 | Task subject shorthand | `Task.Subject contains uppercase code token` | `Task subjects contain repeated shorthand or code terms.` |\n| 124 | User specializes in task type | `count_by(OwnerId,Task.Type)/count_by(Task.Type) >= threshold` | `<User> owns a large share of <Task.Type> tasks.` |\n| 125 | Account relationship maintained by one user | `count(Activity by AccountId,OwnerId)/count(Activity by AccountId) >= 0.75` | `<User> performs most logged activity on <Account>.` |\n| 126 | Opportunity worked by non-owner | `Activity.WhatId=Opportunity AND Activity.OwnerId != Opportunity.OwnerId` | `Some opportunities have activity from users other than the opportunity owner.` |\n| 127 | Case worked by non-owner | `Activity.WhatId=Case AND Activity.OwnerId != Case.OwnerId` | `Some cases have activity from users other than the case owner.` |\n| 128 | Long-running activity thread | `count(Activities by WhatId) percentile >= 95` | `<Record> has an unusually high number of related activities.` |\n| 129 | Email-only activity profile | `EmailMessage count high AND Task/Event count low by user` | `<User> has high email-message volume and low task/event volume.` |\n| 130 | Logged-call-heavy user | `Task.Type=\"Call\" share by user >= threshold` | `<User> logs a high share of activities as calls.` |\n| 131 | Meeting-heavy user | `Event count / total activity by user >= threshold` | `<User> has a meeting-heavy activity profile.` |\n| 132 | No-activity high-value account | `Account won_amount percentile >= 90 AND activity_count = 0` | `<Account> has high won revenue but no related activities in the export.` |\n| 133 | No-activity open opp | `Opportunity.IsClosed=FALSE AND activity_count=0` | `<Opportunity> is open with no related logged activity.` |\n| 134 | Activity burst before close | `count(Activity within N days before Opportunity.CloseDate) percentile >= 90` | `<Opportunity> had a burst of activity shortly before close.` |\n| 135 | Activity silence before loss | `lost Opportunity AND no activity within N days before CloseDate` | `<Opportunity> was lost after a period with no logged activity.` |\n\n---\n\n## 7. Lead and Conversion Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 136 | Lead source concentration | `max(count_by(LeadSource)/row_count(Lead)) >= threshold` | `Most leads come from <LeadSource>.` |\n| 137 | Owner-source concentration | `count_by(OwnerId,LeadSource)/count_by(LeadSource) >= threshold` | `<User> owns a large share of leads from <LeadSource>.` |\n| 138 | Converted lead owner mismatch | `Lead.IsConverted=TRUE AND Lead.OwnerId != ConvertedOpportunity.OwnerId` | `Some converted leads resulted in opportunities owned by different users.` |\n| 139 | Converted lead without opportunity | `IsConverted=TRUE AND ConvertedOpportunityId IS NULL` | `Some converted leads did not create a related opportunity.` |\n| 140 | Lead company becomes account name | `normalize(Lead.Company)=normalize(Account.Name)` | `Some lead company names match account names after normalization.` |\n| 141 | Duplicate lead/contact email | `Lead.Email lower IN Contact.Email lower` | `Some lead emails already exist on contacts.` |\n| 142 | Duplicate lead/account domain | `Lead.Email domain matches Account.Website domain` | `Some leads have email domains matching existing accounts.` |\n| 143 | Lead aging by source | `median(now-CreatedDate by LeadSource)` | `<LeadSource> has a median lead age of <N> days.` |\n| 144 | Fast-converting source | `median(ConvertedDate-CreatedDate by LeadSource) percentile <= 10` | `<LeadSource> converts faster than most lead sources.` |\n| 145 | Slow-converting source | `median(ConvertedDate-CreatedDate by LeadSource) percentile >= 90` | `<LeadSource> converts slower than most lead sources.` |\n| 146 | Silent converter | `ConvertedBy inferred LastModifiedById AND low activity before conversion` | `<User> converts leads with relatively low logged activity before conversion.` |\n| 147 | Lead title vocabulary | `top_tokens(Lead.Title)` | `Lead titles frequently include <Token>.` |\n| 148 | Lead source naming drift | `similar strings in LeadSource using edit_distance <= 2` | `LeadSource contains similar values that likely represent the same source label.` |\n| 149 | Lead company nickname | `Lead.Company contains parentheses/slash/quoted alias` | `Some lead company names contain aliases or alternate names.` |\n| 150 | Stale high-value lead | `Lead.Rating hot AND CreatedDate older_than N days AND IsConverted=FALSE` | `Some hot-rated leads are old and unconverted.` |\n\n---\n\n## 8. Account + Opportunity Cross-Object Insight Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 151 | Account owner not seller | `Account.OwnerId != modal(Opportunity.OwnerId by AccountId)` | `<Account>'s most common opportunity owner differs from the account owner.` |\n| 152 | Account seller concentration | `max(count(Opportunity by AccountId,OwnerId)/count(Opportunity by AccountId)) >= 0.75` | `<User> owns most opportunities for <Account>.` |\n| 153 | Account revenue owner concentration | `max(sum(won Amount by AccountId,OwnerId)/sum(won Amount by AccountId)) >= 0.75` | `<User> is associated with most won revenue for <Account>.` |\n| 154 | Account relationship split | `count_distinct(Opportunity.OwnerId by AccountId) >= threshold` | `<Account> has opportunities owned by multiple users.` |\n| 155 | Account has seller without ownership | `Opportunity.OwnerId=user AND Account.OwnerId != user AND sum(won Amount) high` | `<User> has won revenue on accounts they do not own.` |\n| 156 | House account with many sellers | `Account.Name contains House/General AND count_distinct(Opportunity.OwnerId) high` | `<Account> appears to be a shared selling account based on name and opportunity ownership diversity.` |\n| 157 | Owner creates account but others sell | `Account.CreatedById=user AND modal(Opportunity.OwnerId) != user` | `<User> created accounts that are commonly sold by other users.` |\n| 158 | Opps created by one user, owned by another | `Opportunity.CreatedById != Opportunity.OwnerId; group_by CreatedById,OwnerId high` | `<User A> frequently creates opportunities now owned by <User B>.` |\n| 159 | Account with won opps but no account updates | `won_opp_count > 0 AND Account.LastModifiedDate < max(Opportunity.CloseDate)` | `<Account> has won opportunities more recent than the last account modification date.` |\n| 160 | Account type predicts sales stage | `distribution(StageName by Account.Type) materially concentrated` | `Accounts of type <Type> most commonly have opportunities in <StageName>.` |\n\n---\n\n## 9. Account + Case Cross-Object Insight Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 161 | Account support owner differs from account owner | `modal(Case.OwnerId by AccountId) != Account.OwnerId` | `<Account>'s most common case owner differs from the account owner.` |\n| 162 | Account support concentration | `max(count(Case by AccountId,OwnerId)/count(Case by AccountId)) >= 0.75` | `<User> owns most cases for <Account>.` |\n| 163 | Account case contact concentration | `max(count(Case by AccountId,ContactId)/count(Case by AccountId)) >= threshold` | `<Contact> is associated with many cases for <Account>.` |\n| 164 | Account case subject repeat | `count_by(AccountId,normalize(Case.Subject)) >= threshold` | `<Account> repeatedly files cases with the same normalized subject.` |\n| 165 | Support-heavy customer | `case_count percentile >= 90 AND won_amount percentile >= 90` | `<Account> is both high-revenue and high-support-volume.` |\n| 166 | Low-revenue high-support customer | `case_count percentile >= 90 AND won_amount percentile <= 25` | `<Account> has high support volume and low won revenue in the export.` |\n| 167 | High-revenue high-severity customer | `won_amount percentile >= 90 AND high_priority_case_count >= threshold` | `<Account> has high won revenue and multiple high-priority cases.` |\n| 168 | Case activity after lost deal | `Case.CreatedDate > Opportunity.CloseDate WHERE Opportunity.IsWon=FALSE for same Account` | `<Account> has cases created after a closed-lost opportunity.` |\n| 169 | Case activity before won deal | `Case.CreatedDate within N days before won Opportunity.CloseDate` | `<Account> had support cases shortly before a won opportunity.` |\n| 170 | Account support vocabulary | `top_terms(Case text by AccountId)` | `Cases for <Account> frequently mention <Term>.` |\n\n---\n\n## 10. Opportunity + Case Interaction Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 171 | Case before opportunity creation | `Case.AccountId=Opp.AccountId AND Case.CreatedDate within N days before Opp.CreatedDate` | `<Opportunity> was created soon after a case for the same account.` |\n| 172 | Case before opportunity close | `Case.AccountId=Opp.AccountId AND Case.CreatedDate within N days before Opp.CloseDate` | `<Opportunity> had related account support activity shortly before close.` |\n| 173 | Case after opportunity won | `Case.AccountId=Opp.AccountId AND Opp.IsWon=TRUE AND Case.CreatedDate within N days after CloseDate` | `<Account> opened cases shortly after a won opportunity.` |\n| 174 | Case after opportunity lost | `Case.AccountId=Opp.AccountId AND Opp.IsWon=FALSE AND Case.CreatedDate within N days after CloseDate` | `<Account> opened cases shortly after a lost opportunity.` |\n| 175 | High cases during open opportunity | `open Opportunity AND case_count_since_created >= threshold` | `<Opportunity> has multiple related account cases while open.` |\n| 176 | Support owner helps sales owner | `Case.OwnerId != Opportunity.OwnerId AND same Account during opp lifecycle` | `<User A> handled cases for accounts with opportunities owned by <User B>.` |\n| 177 | Support issue term near lost opp | `lost Opp AND Case text contains term within N days before CloseDate` | `<Term> appeared in support cases shortly before a lost opportunity for <Account>.` |\n| 178 | Support issue term near won opp | `won Opp AND Case text contains term within N days before CloseDate` | `<Term> appeared in support cases shortly before a won opportunity for <Account>.` |\n| 179 | Case-heavy lost accounts | `lost_opp_count > 0 AND case_count percentile >= 90` | `<Account> has lost opportunities and unusually high case volume.` |\n| 180 | Case-light won accounts | `won_opp_count > 0 AND case_count percentile <= 10` | `<Account> has won opportunities and unusually low case volume.` |\n\n---\n\n## 11. User, Role, Profile, and Team Inference Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 181 | User role owns object segment | `count_by(UserRoleId,Object.OwnerId)/object_count >= threshold` | `<Role> owns a large share of <Object> records.` |\n| 182 | Profile owns object segment | `count_by(ProfileId,Object.OwnerId)/object_count >= threshold` | `<Profile> owns a large share of <Object> records.` |\n| 183 | Role-stage concentration | `count(Opportunity by Owner.UserRoleId,StageName)/count(StageName) >= threshold` | `<Role> owns many opportunities in <StageName>.` |\n| 184 | Role-case concentration | `count(Case by Owner.UserRoleId,Status)/count(Status) >= threshold` | `<Role> owns many cases in <Status>.` |\n| 185 | User with broad object footprint | `count_distinct(objects where user appears in OwnerId/CreatedById/LastModifiedById) percentile >= 95` | `<User> appears across an unusually broad set of objects.` |\n| 186 | User as data creator not owner | `CreatedById=user high AND OwnerId=user low` | `<User> creates many records that are owned by other users.` |\n| 187 | User as last modifier | `LastModifiedById=user high across objects` | `<User> frequently appears as the last modifier across multiple objects.` |\n| 188 | Admin-like modifier pattern | `Profile.Name contains Admin AND LastModifiedById count high` | `<User> appears as a frequent modifier and has an admin-like profile.` |\n| 189 | Integration user footprint | `User.Name contains Integration/API/System OR Profile contains Integration AND CreatedById high` | `<User> appears to function as an integration or system user.` |\n| 190 | Integration-created business records | `CreatedById integration_user AND object in Account/Contact/Opportunity/Case` | `Some core CRM records are created by an integration user.` |\n| 191 | Inactive owner | `OwnerId in User WHERE IsActive=FALSE` | `Some records are owned by inactive users.` |\n| 192 | Inactive creator still active records | `CreatedById inactive_user AND IsClosed=FALSE or active status` | `Some active records were created by inactive users.` |\n| 193 | User owns records outside role norm | `UserRole owns uncommon RecordTypeId compared to role distribution` | `<User> owns record types uncommon for their role.` |\n| 194 | Single-user process object | `count_distinct(OwnerId)=1 AND row_count>=threshold` | `<Object> appears to be primarily managed by one user.` |\n| 195 | Multi-role process object | `count_distinct(Owner.UserRoleId)>=threshold` | `<Object> is used across multiple roles.` |\n\n---\n\n## 12. RecordType, Picklist, and Business Taxonomy Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 196 | RecordType concentration | `max(count_by(RecordTypeId)/row_count(Object)) >= threshold` | `<RecordType> accounts for most <Object> records.` |\n| 197 | Rare RecordType | `count_by(RecordTypeId) <= percentile_5 AND count > 0` | `<RecordType> is rarely used on <Object>.` |\n| 198 | RecordType owned by one team | `max(count_by(RecordTypeId,OwnerRole)/count_by(RecordTypeId)) >= threshold` | `<RecordType> is primarily owned by <Role>.` |\n| 199 | Picklist value concentration | `max(count_by(Field)/non_null_count(Field)) >= threshold` | `<Field> is heavily concentrated in value <Value>.` |\n| 200 | Picklist long tail | `count_distinct(Field) high AND many values count=1` | `<Field> has a long tail of rarely used values.` |\n| 201 | Generic value overuse | `Field IN [\"Other\",\"Unknown\",\"N/A\",\"Misc\",\"General\"] share >= threshold` | `<Field> frequently uses generic values.` |\n| 202 | Null-heavy field | `null_count(Field)/row_count(Object) >= threshold` | `<Field> is blank on a large share of <Object> records.` |\n| 203 | Rarely blank field | `null_count(Field)/row_count(Object) <= threshold_low` | `<Field> is almost always populated on <Object>.` |\n| 204 | Field value tied to owner | `max(count_by(OwnerId,FieldValue)/count_by(FieldValue)) >= threshold` | `<Field>=<Value> is disproportionately associated with <User>.` |\n| 205 | Field value tied to record type | `max(count_by(RecordTypeId,FieldValue)/count_by(FieldValue)) >= threshold` | `<Field>=<Value> is disproportionately associated with <RecordType>.` |\n| 206 | Field name reveals process | `field_name contains Approval/Escalation/Manual/Override/Exception/Legacy` | `<Field> name indicates a business concept: <Matched Token>.` |\n| 207 | Custom picklist as taxonomy | `field_name ends \"__c\" AND count_distinct(Field) between 3 and 100` | `<Field> appears to function as a custom business classification field.` |\n| 208 | Checkbox process flag | `boolean field true_share between 1% and 50%` | `<Field> marks a subset of records with a custom process flag.` |\n| 209 | Checkbox rarely used | `boolean field true_share < 1% AND true_count > 0` | `<Field> is almost always false but is true on some records.` |\n| 210 | Checkbox dominates | `boolean field true_share > 90%` | `<Field> is true on most records.` |\n\n---\n\n## 13. Text Mining, Nomenclature, Nicknames, and Internal Language Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 211 | Repeated phrase in object text | `ngram_frequency(text_fields, n=2..5) >= threshold` | `<Phrase> appears repeatedly in <Object> text fields.` |\n| 212 | Phrase across objects | `phrase appears in >= 2 object text corpora` | `<Phrase> appears across multiple Salesforce objects.` |\n| 213 | Object-specific phrase | `phrase frequent in one object AND absent/rare elsewhere` | `<Phrase> is specific to <Object> text fields.` |\n| 214 | User-specific phrase | `phrase frequency by CreatedById or OwnerId >= threshold_share` | `<Phrase> is disproportionately used by <User>.` |\n| 215 | Account-specific phrase | `phrase frequency by AccountId >= threshold_share` | `<Phrase> is disproportionately associated with <Account>.` |\n| 216 | Product-specific phrase | `phrase frequency by Product2Id or product-linked records >= threshold_share` | `<Phrase> is disproportionately associated with <Product>.` |\n| 217 | Nickname marker | `text contains parentheses after proper noun OR quoted term` | `Some records contain nickname-style terms in text.` |\n| 218 | Slash alias marker | `text contains pattern \"term / term\" OR \"term aka term\"` | `Some records contain alias-style naming patterns.` |\n| 219 | Acronym inventory | `tokens matching \"^[A-Z]{2,6}$\" frequency >= threshold` | `<Acronym> appears frequently in text fields.` |\n| 220 | Hyphenated internal code inventory | `tokens matching \"[A-Z]+-[0-9]+\" OR \"[A-Z]+-[A-Z]+\"` | `<Code> appears frequently in text fields.` |\n| 221 | External system reference | `text contains Jira, Zendesk, NetSuite, SAP, Oracle, Slack, Teams, Excel, SharePoint` | `<Tool> is referenced in Salesforce text fields.` |\n| 222 | Manual process language | `text contains manually/manual/spreadsheet/upload/export/import/copy paste` | `Manual-process language appears in Salesforce text fields.` |\n| 223 | Urgency language | `text contains urgent/asap/critical/blocker/sev1/sev2/escalate` | `Urgency language appears in Salesforce text fields.` |\n| 224 | Exception language | `text contains exception/override/bypass/special case/edge case` | `Exception-handling language appears in Salesforce text fields.` |\n| 225 | Dependency language | `text contains waiting on/pending/blocked by/needs approval` | `Dependency language appears in Salesforce text fields.` |\n| 226 | Ownership routing language | `text contains route/send to/assign to/pass to/escalate to` | `Routing language appears in Salesforce text fields.` |\n| 227 | Known-person mention | `text contains User.Name or Contact.Name` | `Salesforce text fields mention named people present in the export.` |\n| 228 | Unknown-person mention | `capitalized two-word phrase not matching User/Contact/Account names frequency >= threshold` | `Text fields repeatedly mention names not found as users, contacts, or accounts.` |\n| 229 | Internal team mention | `text contains team/dept/group names from Role/Profile/Queue names` | `Text fields reference internal teams represented elsewhere in Salesforce metadata exports.` |\n| 230 | Customer nickname detected | `Account.Name formal AND case/opportunity text contains shorter repeated variant` | `<Account> appears to have a shorter nickname used in related text.` |\n\n---\n\n## 14. Custom Object Discovery Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 231 | Custom object linked to Account | `has_column(Account__c) OR lookup column values match Account.Id prefix` | `<Object__c> is related to Accounts.` |\n| 232 | Custom object linked to Contact | `has_column(Contact__c) OR lookup column values match Contact.Id prefix` | `<Object__c> is related to Contacts.` |\n| 233 | Custom object linked to Opportunity | `has_column(Opportunity__c) OR lookup column values match Opportunity.Id prefix` | `<Object__c> is related to Opportunities.` |\n| 234 | Custom object linked to Case | `has_column(Case__c) OR lookup column values match Case.Id prefix` | `<Object__c> is related to Cases.` |\n| 235 | Custom object as junction | `has >=2 lookup-like columns ending \"__c\"` | `<Object__c> appears to connect multiple other records.` |\n| 236 | Custom object as event log | `has CreatedDate AND many rows per parent AND low editable fields` | `<Object__c> appears to function as a log/history-style object.` |\n| 237 | Custom object as approval/workflow | `object/field names contain Approval/Review/Request/Submission` | `<Object__c> appears to represent an approval, review, request, or submission process.` |\n| 238 | Custom object as entitlement/support | `object/field names contain SLA/Entitlement/Service/Support` | `<Object__c> appears to represent a support or entitlement concept.` |\n| 239 | Custom object as finance process | `object/field names contain Invoice/Billing/Payment/Revenue/Commission` | `<Object__c> appears to represent a finance-related process.` |\n| 240 | Custom object as implementation process | `object/field names contain Project/Implementation/Onboarding/Deployment` | `<Object__c> appears to represent an implementation or onboarding process.` |\n| 241 | Custom object with one parent dominating | `max(count_by(parent_lookup)/row_count(Object)) >= threshold` | `<Parent Record> has a large share of related <Object__c> records.` |\n| 242 | Custom object owner concentration | `max(count_by(OwnerId)/row_count(Object)) >= threshold` | `<User> owns a large share of <Object__c> records.` |\n| 243 | Custom object status concentration | `max(count_by(Status__c)/row_count(Object)) >= threshold` | `<Object__c> records are heavily concentrated in status <Status>.` |\n| 244 | Custom object status aging | `median(now-CreatedDate by Status__c)` | `<Status> records in <Object__c> have a median age of <N> days.` |\n| 245 | Custom object naming vocabulary | `top_tokens(Name field)` | `<Object__c> names frequently include <Token>.` |\n\n---\n\n## 15. Workaround and “Unofficial Mechanism” Detection Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 246 | Account team substitute via tasks | `many users Activity on Account AND AccountTeamMember absent or sparse` | `<Account> has multiple active contributors but few or no Account Team records.` |\n| 247 | Opportunity team substitute via tasks | `many users Activity on Opportunity AND OpportunityTeamMember absent or sparse` | `<Opportunity> has multiple active contributors but few or no Opportunity Team records.` |\n| 248 | Case team substitute via comments | `many users CaseComment on Case AND no team/share records` | `<Case> has multiple contributors visible through comments rather than team records.` |\n| 249 | Contact role substitute via activity | `many contacts active on Opportunity account AND OpportunityContactRole sparse` | `<Opportunity> has contact activity but few or no opportunity contact roles.` |\n| 250 | Parent account substitute via naming | `Account.Name contains delimiter hierarchy \"Parent - Child\" AND ParentId null` | `Some account hierarchy appears encoded in Account names instead of Parent Account.` |\n| 251 | Region substitute via account name | `Account.Name contains region tokens AND BillingState/BillingCountry populated` | `Some region information appears encoded in Account names.` |\n| 252 | Owner substitute via text mention | `text mentions User.Name repeatedly where User is not OwnerId` | `<User> is repeatedly mentioned on records they do not own.` |\n| 253 | Queue substitute via status | `Status value contains team/department name AND OwnerId individual` | `Some queue-like routing appears encoded in status values rather than ownership.` |\n| 254 | SLA substitute via subject | `Case.Subject contains P1/P2/SLA/urgent while SLA fields absent/null` | `Some service-priority information appears encoded in case subjects.` |\n| 255 | Product substitute via text | `Case.Product__c null AND product names appear in Case text` | `Some product references appear in text rather than product fields.` |\n| 256 | Segment substitute via account name | `Account.Type null/generic AND Account.Name contains segment keywords` | `Some account segmentation appears encoded in account names.` |\n| 257 | Renewal substitute via opportunity name | `Opportunity.Type null/generic AND Name contains renewal/renew` | `Some renewal classification appears encoded in opportunity names.` |\n| 258 | Lost reason substitute via text | `Loss_Reason field null/generic AND Description contains reason-like phrases` | `Some loss reasons appear in opportunity text rather than structured fields.` |\n| 259 | Support category substitute via subject | `Case.Type null/generic AND Subject contains repeated category tokens` | `Some case categorization appears encoded in case subjects.` |\n| 260 | Approval substitute via comments | `comments contain approved/approval/ok to proceed AND approval object absent/sparse` | `Some approval evidence appears in comments rather than approval records.` |\n\n---\n\n## 16. Data Relationship Graph Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 261 | Object relationship discovered by ID prefix | `column values match known Salesforce Id prefix of another object` | `<Object> appears to reference <Target Object> through <Column>.` |\n| 262 | Lookup field high coverage | `non_null_count(lookup_field)/row_count(Object) >= threshold` | `<Lookup Field> is populated on most <Object> records.` |\n| 263 | Lookup field low coverage | `non_null_count(lookup_field)/row_count(Object) <= threshold` | `<Lookup Field> is rarely populated on <Object> records.` |\n| 264 | Parent record with child concentration | `max(child_count by parent_id) percentile >= 99` | `<Parent Record> has an unusually high number of related <Child Object> records.` |\n| 265 | Orphaned lookup | `lookup value not found in referenced object Ids` | `<Object> contains lookup values whose referenced records are not present in the export.` |\n| 266 | Broken owner references | `OwnerId not found in User.Id or Group.Id` | `<Object> contains owner references not present in exported users or groups.` |\n| 267 | Multi-object hub account | `count_distinct(child object types linked to Account) percentile >= 95` | `<Account> appears across many different related object types.` |\n| 268 | Multi-object hub user | `count_distinct(object types where user appears) percentile >= 95` | `<User> appears across many different object types.` |\n| 269 | Multi-object hub contact | `count_distinct(object types linked to Contact) percentile >= 95` | `<Contact> appears across many different related object types.` |\n| 270 | Custom object centrality | `degree(Object__c in discovered relationship graph) percentile >= 90` | `<Object__c> is highly connected to other exported objects.` |\n\n---\n\n## 17. Temporal and Lifecycle Pattern Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 271 | Created-date volume spike | `daily_created_count > mean + 3*std` | `<Object> had a creation-volume spike on <Date>.` |\n| 272 | Last-modified spike | `daily_modified_count > mean + 3*std` | `<Object> had a modification-volume spike on <Date>.` |\n| 273 | User-created spike | `daily_created_count by CreatedById > user_mean + 3*user_std` | `<User> created an unusually high number of <Object> records on <Date>.` |\n| 274 | Integration import spike | `CreatedBy integration user AND daily count spike` | `<Integration User> created many <Object> records on <Date>.` |\n| 275 | Weekend creation pattern | `count(CreatedDate day_of_week in Sat/Sun)/row_count >= threshold` | `<Object> has a notable share of records created on weekends.` |\n| 276 | After-hours creation pattern | `CreatedTime outside business hours share >= threshold` | `<Object> has a notable share of records created outside business hours.` |\n| 277 | End-of-month opportunity close concentration | `CloseDate day >= 25 share >= threshold` | `Opportunity close dates are concentrated near the end of the month.` |\n| 278 | End-of-quarter close concentration | `CloseDate in last 14 days of quarter share >= threshold` | `Opportunity close dates are concentrated near quarter end.` |\n| 279 | Case creation time concentration | `hour_bucket(Case.CreatedDate) max share >= threshold` | `Cases are frequently created during the <Hour Bucket> time window.` |\n| 280 | Stale open records | `IsClosed=FALSE or Status open AND age >= percentile_90` | `<Record> is among the oldest open <Object> records.` |\n| 281 | Fast lifecycle by owner | `median(close_date-created_date by OwnerId) percentile <= 10` | `<User> has one of the shortest median lifecycles for <Object>.` |\n| 282 | Slow lifecycle by owner | `median(close_date-created_date by OwnerId) percentile >= 90` | `<User> has one of the longest median lifecycles for <Object>.` |\n| 283 | Status aging hotspot | `median(age by Status) percentile >= 90` | `<Status> contains records with unusually high median age.` |\n| 284 | RecordType aging hotspot | `median(age by RecordTypeId) percentile >= 90` | `<RecordType> contains records with unusually high median age.` |\n| 285 | Account lifecycle span | `max(child.CreatedDate)-min(child.CreatedDate by AccountId)` | `<Account> has related activity spanning <N> days.` |\n\n---\n\n## 18. Name, Field, and Schema Semantics Rules\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 286 | Field name contains business noun | `field_name tokens excluding suffixes` | `<Field> contains the business term <Token>.` |\n| 287 | Object name contains business noun | `object_name tokens excluding __c, underscores` | `<Object> contains the business term <Token>.` |\n| 288 | Repeated business noun across schema | `token appears in >= N field/object names` | `<Token> appears across multiple object or field names.` |\n| 289 | Legacy marker | `object_or_field_name contains Legacy/Old/Deprecated/V1/V2` | `<Object/Field> contains a legacy or version marker.` |\n| 290 | Manual marker | `object_or_field_name contains Manual/Override/Exception` | `<Object/Field> contains a manual, override, or exception marker.` |\n| 291 | External system marker | `object_or_field_name contains ERP/SAP/NetSuite/Jira/Zendesk` | `<Object/Field> appears to reference an external system.` |\n| 292 | Compliance marker | `object_or_field_name contains Compliance/Consent/Privacy/Audit` | `<Object/Field> appears to reference compliance, consent, privacy, or audit concepts.` |\n| 293 | Finance marker | `object_or_field_name contains ARR/MRR/Invoice/Billing/Payment/Revenue` | `<Object/Field> appears to reference finance or revenue operations concepts.` |\n| 294 | Support marker | `object_or_field_name contains SLA/Escalation/Severity/Support` | `<Object/Field> appears to reference support operations concepts.` |\n| 295 | Sales marker | `object_or_field_name contains Territory/Quota/Commission/Pipeline` | `<Object/Field> appears to reference sales operations concepts.` |\n| 296 | Onboarding marker | `object_or_field_name contains Onboarding/Implementation/Launch/GoLive` | `<Object/Field> appears to reference onboarding or implementation concepts.` |\n| 297 | Exception field actually used | `field name contains Exception/Override AND non_null_or_true_count > 0` | `<Field> contains exception or override values on actual records.` |\n| 298 | Legacy field still populated | `field name contains Legacy/Old AND non_null_count > 0` | `<Field> is legacy-labeled but still populated.` |\n| 299 | Deprecated object still active | `object_name contains Deprecated/Legacy AND max(LastModifiedDate) recent` | `<Object> is legacy-labeled but has recent modifications.` |\n| 300 | Business term bridge | `same token appears in object name, field name, and text values` | `<Token> appears in schema names and record text, making it a recurring business term.` |\n\n---\n\n## 19. “Lucrative Fact” Statement Generators\n\nThese are final derived observations assembled from prior checks.\n\n| # | Check | Deterministic pseudo-formula | One-sentence fact emitted |\n|---:|---|---|---|\n| 301 | Hidden account lead | `Account owner != modal(activity owner) AND modal(activity owner share >= 0.5)` | `<User> appears to be the most active logged contributor on <Account>, despite not owning the account.` |\n| 302 | Hidden opportunity lead | `Opportunity owner != modal(activity owner) AND modal(activity owner share >= 0.5)` | `<User> appears to be the most active logged contributor on <Opportunity>, despite not owning the opportunity.` |\n| 303 | Hidden support lead | `Case owner != modal(comment creator) AND modal(comment creator share >= 0.5` | `<User> appears to be the main commenter on <Case>, despite not owning the case.` |\n| 304 | Silent revenue owner | `won_amount percentile >= 90 AND activity_count percentile <= 25` | `<User> is associated with high won revenue and low logged activity volume.` |\n| 305 | Silent account controller | `account_count percentile >= 90 AND activity_count percentile <= 25` | `<User> owns many accounts with relatively low logged activity.` |\n| 306 | Unofficial team account | `count_distinct(activity owners by AccountId) >= threshold AND AccountTeamMember count=0` | `<Account> has multiple active contributors but no exported Account Team structure.` |\n| 307 | Unofficial team opportunity | `count_distinct(activity owners by OpportunityId) >= threshold AND OpportunityTeamMember count=0` | `<Opportunity> has multiple active contributors but no exported Opportunity Team structure.` |\n| 308 | Internal nickname confirmed | `term appears in text fields linked to same Account AND term != normalized(Account.Name)` | `<Term> appears to function as an internal nickname for <Account>.` |\n| 309 | Process term confirmed | `term appears across >=3 objects AND term appears in custom field/object names` | `<Term> appears to be a recurring business process term across schema and record data.` |\n| 310 | External-tool dependency confirmed | `external tool term appears in text fields >= threshold AND field/object names also contain tool term` | `<Tool> appears in both schema names and record text.` |\n| 311 | Manual workaround confirmed | `manual/workaround language appears in text AND structured field for same concept is null/generic` | `Some records describe manual handling where the corresponding structured field is blank or generic.` |\n| 312 | Sales-support bridge user | `User appears in top quartile for both Opportunity activity and Case activity` | `<User> has a high activity footprint across both sales and support records.` |\n| 313 | Account has operational gravity | `Account percentile >=90 for at least 3 child object counts` | `<Account> is a high-connectivity account across multiple object types.` |\n| 314 | Contact has operational gravity | `Contact percentile >=90 for at least 3 linked object counts` | `<Contact> is a high-connectivity contact across multiple object types.` |\n| 315 | User has operational gravity | `User percentile >=90 for OwnerId/CreatedById/LastModifiedById/activity/comment appearances` | `<User> has a high-connectivity footprint across ownership, creation, modification, and activity data.` |\n\n---\n\n# Output Shape for Each Insight\n\nUse this rigid shape later:\n\n```text\n{\n  \"rule_id\": \"OPP_015\",\n  \"object_files_used\": [\"Opportunity.csv\", \"Account.csv\", \"User.csv\", \"Task.csv\", \"Event.csv\"],\n  \"record_scope\": \"User\",\n  \"subject_id\": \"<UserId>\",\n  \"subject_label\": \"<User.Name>\",\n  \"fact\": \"<User> is associated with high won revenue while having a low logged activity footprint.\",\n  \"deterministic_basis\": \"sum(won Opportunity.Amount by OwnerId) >= p90 AND count(Task/Event by OwnerId) <= p25\",\n  \"supporting_counts\": {\n    \"won_amount\": 1250000,\n    \"won_amount_percentile\": 94,\n    \"activity_count\": 8,\n    \"activity_count_percentile\": 19\n  }\n}\n```\n\n# Best First Batch to Implement\n\nStart with these 25 because they are high-signal and deterministic:\n\n```text\n11  Owner concentration by object\n15  Revenue-heavy low-footprint seller\n22  User owns opps without owning accounts\n24  Shadow account manager via activities\n31  Account name variants\n42  Account is support-heavy\n43  Account is revenue-heavy support-light\n48  Account owner mismatch with opps\n51  Duplicate contacts by email\n61  Contact appears in many opportunities\n72  Silent won opportunity\n78  Close date pushed repeatedly\n91  Case subject repeated\n93  Case code vocabulary\n95  Case workaround language\n98  Case tribal contact mention\n99  Case solved by unofficial person\n116 Activity concentration by user\n125 Account relationship maintained by one user\n151 Account owner not seller\n161 Account support owner differs from account owner\n211 Repeated phrase in object text\n219 Acronym inventory\n246 Account team substitute via tasks\n301 Hidden account lead\n```"
+                    ]
+                },
+                "status": "finished_successfully",
+                "end_turn": true,
+                "weight": 1.0,
+                "metadata": {
+                    "finish_details": {
+                        "type": "stop",
+                        "stop_tokens": [
+                            200002
+                        ]
+                    },
+                    "is_complete": true,
+                    "citations": [],
+                    "content_references": [],
+                    "story_events": [],
+                    "resolved_model_slug": "gpt-5-5-thinking",
+                    "code_blocks": {
+                        "0": {
+                            "id": "udboy6",
+                            "edited": false,
+                            "previewable": false,
+                            "preview_language": null
+                        },
+                        "1": {
+                            "id": "sholp8",
+                            "edited": false,
+                            "previewable": false,
+                            "preview_language": null
+                        }
+                    },
+                    "search_result_groups": [],
+                    "request_id": "652e26da-4175-4159-b125-1af41f1a0be4",
+                    "message_type": "next",
+                    "turn_exchange_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "working_turn_id": "4b0bf4ab-b727-4bcd-8ec4-59681f31390d",
+                    "model_slug": "gpt-5-5-thinking",
+                    "default_model_slug": "gpt-5-5-thinking",
+                    "thinking_effort": "standard",
+                    "can_save": true,
+                    "parent_id": "7199ef7a-e0c0-4f90-b2bc-8222dc81ade8",
+                    "model_switcher_deny": []
+                },
+                "recipient": "all",
+                "channel": "final"
+            },
+            "parent": "7199ef7a-e0c0-4f90-b2bc-8222dc81ade8",
+            "children": []
+        }
+    },
+    "current_node": "19a0f64f-2319-4e29-af57-3087c9ffebb3"
+}
