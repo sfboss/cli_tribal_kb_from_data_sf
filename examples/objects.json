@@ -1,0 +1,17 @@
+{
+  "objects": {
+    "Account": {
+      "file": "accounts.csv",
+      "primary_key": "Id"
+    },
+    "Contact": {
+      "file": "contacts.csv",
+      "primary_key": "Id"
+    },
+    "Opportunity": {
+      "file": "opportunities.csv",
+      "primary_key": "Id"
+    }
+  }
+}
+

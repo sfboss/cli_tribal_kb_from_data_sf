@@ -1,0 +1,223 @@
+{
+  "report": {
+    "title": "Revenue Operations Tribal Knowledge",
+    "subtitle": "Signals and operating risks inferred from a sample Salesforce export."
+  },
+  "rules": [
+    {
+      "id": "contact-email-coverage",
+      "title": "Contact email coverage is weak",
+      "description": "Measures the share of contacts that cannot be reached by email.",
+      "category": "Data quality",
+      "severity": "high",
+      "calculation": {
+        "operator": "divide",
+        "operands": [
+          {
+            "aggregate": "count",
+            "object": "Contact",
+            "where": {
+              "field": "Email",
+              "operator": "is_blank"
+            }
+          },
+          {
+            "aggregate": "count",
+            "object": "Contact"
+          }
+        ]
+      },
+      "threshold": {
+        "operator": "gt",
+        "value": 0.2
+      },
+      "format": "percent",
+      "message": "{formatted_value} of contacts have no email address.",
+      "recommendation": "Prioritize email enrichment before the next outbound or renewal campaign.",
+      "evidence": {
+        "object": "Contact",
+        "where": {
+          "field": "Email",
+          "operator": "is_blank"
+        },
+        "fields": ["Id", "Name", "AccountId", "Title"]
+      }
+    },
+    {
+      "id": "accounts-without-contacts",
+      "title": "Accounts exist without mapped contacts",
+      "description": "Uses Account.Id to Contact.AccountId to find accounts with no relationship coverage.",
+      "category": "Relationship coverage",
+      "severity": "medium",
+      "calculation": {
+        "aggregate": "count",
+        "object": "Account",
+        "where": {
+          "relationship": {
+            "object": "Contact",
+            "local_field": "Id",
+            "remote_field": "AccountId",
+            "aggregate": "count"
+          },
+          "operator": "eq",
+          "value": 0
+        }
+      },
+      "threshold": {
+        "operator": "gt",
+        "value": 0
+      },
+      "format": "number",
+      "message": "{formatted_value} accounts have no associated contacts.",
+      "recommendation": "Assign account owners to identify at least one current stakeholder.",
+      "evidence": {
+        "object": "Account",
+        "where": {
+          "relationship": {
+            "object": "Contact",
+            "local_field": "Id",
+            "remote_field": "AccountId",
+            "aggregate": "count"
+          },
+          "operator": "eq",
+          "value": 0
+        },
+        "fields": ["Id", "Name", "Industry", "OwnerId"]
+      }
+    },
+    {
+      "id": "stale-open-pipeline",
+      "title": "Open pipeline contains stale close dates",
+      "description": "Measures open opportunities whose close date is more than 90 days old.",
+      "category": "Pipeline hygiene",
+      "severity": "critical",
+      "calculation": {
+        "operator": "divide",
+        "operands": [
+          {
+            "aggregate": "count",
+            "object": "Opportunity",
+            "where": {
+              "all": [
+                {
+                  "field": "StageName",
+                  "operator": "not_in",
+                  "value": ["Closed Won", "Closed Lost"]
+                },
+                {
+                  "field": "CloseDate",
+                  "operator": "older_than_days",
+                  "value": 90
+                }
+              ]
+            }
+          },
+          {
+            "aggregate": "count",
+            "object": "Opportunity",
+            "where": {
+              "field": "StageName",
+              "operator": "not_in",
+              "value": ["Closed Won", "Closed Lost"]
+            }
+          }
+        ]
+      },
+      "threshold": {
+        "operator": "gte",
+        "value": 0.25
+      },
+      "format": "percent",
+      "message": "{formatted_value} of open opportunities have stale close dates.",
+      "recommendation": "Run a pipeline scrub and either re-date, close, or disqualify stale opportunities.",
+      "evidence": {
+        "object": "Opportunity",
+        "where": {
+          "all": [
+            {
+              "field": "StageName",
+              "operator": "not_in",
+              "value": ["Closed Won", "Closed Lost"]
+            },
+            {
+              "field": "CloseDate",
+              "operator": "older_than_days",
+              "value": 90
+            }
+          ]
+        },
+        "fields": ["Id", "Name", "StageName", "Amount", "OwnerId", "CloseDate"]
+      }
+    },
+    {
+      "id": "pipeline-owner-concentration",
+      "title": "Open pipeline is concentrated under one owner",
+      "description": "Finds the largest owner's share of all open opportunity records.",
+      "category": "Operating model",
+      "severity": "low",
+      "calculation": {
+        "aggregate": "largest_group_share",
+        "object": "Opportunity",
+        "field": "OwnerId",
+        "where": {
+          "field": "StageName",
+          "operator": "not_in",
+          "value": ["Closed Won", "Closed Lost"]
+        }
+      },
+      "threshold": {
+        "operator": "gt",
+        "value": 0.7
+      },
+      "format": "percent",
+      "message": "The leading owner controls {formatted_value} of open opportunity records.",
+      "recommendation": "Confirm this concentration is intentional and document backup ownership."
+    },
+    {
+      "id": "missing-next-step",
+      "title": "Open opportunities have documented next steps",
+      "description": "Checks whether missing next steps remain below the accepted tolerance.",
+      "category": "Pipeline hygiene",
+      "severity": "medium",
+      "calculation": {
+        "operator": "divide",
+        "operands": [
+          {
+            "aggregate": "count",
+            "object": "Opportunity",
+            "where": {
+              "all": [
+                {
+                  "field": "StageName",
+                  "operator": "not_in",
+                  "value": ["Closed Won", "Closed Lost"]
+                },
+                {
+                  "field": "NextStep",
+                  "operator": "is_blank"
+                }
+              ]
+            }
+          },
+          {
+            "aggregate": "count",
+            "object": "Opportunity",
+            "where": {
+              "field": "StageName",
+              "operator": "not_in",
+              "value": ["Closed Won", "Closed Lost"]
+            }
+          }
+        ]
+      },
+      "threshold": {
+        "operator": "gt",
+        "value": 0.75
+      },
+      "format": "percent",
+      "message": "{formatted_value} of open opportunities lack a next step.",
+      "recommendation": "Require a dated, owner-specific next step before an opportunity can advance."
+    }
+  ]
+}
+
